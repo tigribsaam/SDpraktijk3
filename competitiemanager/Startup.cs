@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using competitiemanager.Models.Interfaces;
+using competitiemanager.Models.Repositories;
+
 namespace competitiemanager
 {
     public class Startup
@@ -16,6 +19,14 @@ namespace competitiemanager
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IBetRepository, BetRepository>();
+            services.AddScoped<ICompetitionRepository, CompetitionRepository>();
+            services.AddScoped<IGameRepository, GameRepository>();
+            services.AddScoped<ITeamInCompRepository, TeamInCompRepository>();
+            services.AddScoped<ITeamRepository, TeamRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+
+
             services.AddControllersWithViews();
 
         }
@@ -42,3 +53,4 @@ namespace competitiemanager
         }
     }
 }
+ 
