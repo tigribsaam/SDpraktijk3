@@ -8,7 +8,12 @@ namespace competitiemanager.Models.Repositories
 {
     public class CompetitionRepository : ICompetitionRepository
     {
-        public IEnumerable<Competition> AllCompetitions => throw new NotImplementedException();
+        private readonly ICompetitionRepository _competitionRepository = new CompetitionRepository();
+        public IEnumerable<Competition> AllCompetitions =>
+            new List<Competition>
+            {
+                //new Competition {CompId = 1, Name= "comp 1", Games, Teams}
+            };
 
         public Competition GetCompById(int CompId)
         {

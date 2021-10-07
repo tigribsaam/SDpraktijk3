@@ -8,11 +8,39 @@ namespace competitiemanager.Models.Repositories
 {
     public class TeamRepository : ITeamRepository
     {
-        public IEnumerable<Team> AllTeams => throw new NotImplementedException();
+        private readonly ITeamRepository _teamRepository = new TeamRepository();
+        public IEnumerable<Team> AllTeams =>
+            new List<Team>
+            {
+                new Team {
+                    TeamId = 1,
+                    Name = "De Winnaars",
+                    Players = {
+                        "speler 1",
+                        "speler 2",
+                        "speler 3",
+                        "speler 4",
+                        "speler 5",
+                        "speler 6"},
+                    Location = "locatie A"
+                },
+                new Team{
+                    TeamId = 2,
+                    Name = "De Verliezers",
+                    Players = {
+                        "speler 1",
+                        "speler 2",
+                        "speler 3",
+                        "speler 4",
+                        "speler 5",
+                        "speler 6"},
+                    Location = "locatie B"
+                }
+            };
 
-        public Team GetTeamById(int TeamId)
+        public Team GetTeamById(int teamId)
         {
-            throw new NotImplementedException();
+            return AllTeams.FirstOrDefault(t => t.TeamId == teamId);
         }
     }
 }

@@ -18,3 +18,14 @@ C:\Users\Birgi\GitHub\SDpraktijk3\competitiemanager\obj\Debug\netcoreapp3.1\stat
 C:\Users\Birgi\GitHub\SDpraktijk3\competitiemanager\obj\Debug\netcoreapp3.1\competitiemanager.dll
 C:\Users\Birgi\GitHub\SDpraktijk3\competitiemanager\obj\Debug\netcoreapp3.1\competitiemanager.pdb
 C:\Users\Birgi\GitHub\SDpraktijk3\competitiemanager\obj\Debug\netcoreapp3.1\competitiemanager.genruntimeconfig.cache
+C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\competitiemanager.RazorAssemblyInfo.cache
+C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\competitiemanager.RazorAssemblyInfo.cs
+C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\competitiemanager.TagHelpers.input.cache
+C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\competitiemanager.TagHelpers.output.cache
+C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\competitiemanager.RazorCoreGenerate.cache
+C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\Razor\Views\Team\List.cshtml.g.cs
+C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\competitiemanager.RazorTargetAssemblyInfo.cs
+C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\bin\Debug\netcoreapp3.1\competitiemanager.Views.dll
+C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\bin\Debug\netcoreapp3.1\competitiemanager.Views.pdb
+C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\competitiemanager.Views.pdb
+C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\competitiemanager.csproj.CopyComplete

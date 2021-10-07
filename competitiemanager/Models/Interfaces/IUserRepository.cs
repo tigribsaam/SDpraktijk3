@@ -8,6 +8,6 @@ namespace competitiemanager.Models.Interfaces
     public interface IUserRepository
     {
         IEnumerable<User> AllUsers { get; }
-        User GetUserById(int UserId);
+        User GetUserById(int userId);
     }
 }

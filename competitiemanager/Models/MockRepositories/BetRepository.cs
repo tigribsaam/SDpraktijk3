@@ -9,6 +9,7 @@ namespace competitiemanager.Models.Repositories
 {
     public class BetRepository : IBetRepository
     {
+        private readonly IBetRepository _betRepository = new BetRepository();
         public Bet GetBetById(int BetId)
         {
             throw new NotImplementedException();

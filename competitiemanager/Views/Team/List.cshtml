@@ -1,0 +1,22 @@
+﻿@model IEnumerable<competitiemanager.Models.Team>
+
+<html>
+<head>
+    <title>Teams</title>
+</head>
+<body>
+    <h1>Alle teams</h1>
+
+    @foreach (var team in Model)
+    {
+        <div>
+            <h3>@team.Name</h3>
+            <p>@team.Location</p>
+            @foreach (var playa in team.Players)
+            {
+                <p>@playa</p>
+            }
+        </div>
+    }
+</body>
+</html>

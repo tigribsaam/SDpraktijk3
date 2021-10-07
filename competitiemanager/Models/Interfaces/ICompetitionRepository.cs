@@ -8,6 +8,6 @@ namespace competitiemanager.Models.Interfaces
     public interface ICompetitionRepository
     {
         IEnumerable<Competition> AllCompetitions {get;}
-        Competition GetCompById(int CompId);
+        Competition GetCompById(int compId);
     }
 }

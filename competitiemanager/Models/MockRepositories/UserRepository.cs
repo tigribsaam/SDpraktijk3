@@ -9,11 +9,20 @@ namespace competitiemanager.Models.Repositories
 
     public class UserRepository : IUserRepository
     {
-        public IEnumerable<User> AllUsers => throw new NotImplementedException();
+        private readonly IUserRepository _userRepository = new UserRepository();
+        public IEnumerable<User> AllUsers =>
+            new List<User>
+            {
+                new User {
+                    UserId = 1,
+                    Name = "Ad Random",
+                    TotoScore = 0,
+                    Bets = {}}
+            };
 
-        public User GetUserById(int UserId)
+        public User GetUserById(int userId)
         {
-            throw new NotImplementedException();
+            return AllUsers.FirstOrDefault(u => u.UserId == userId);
         }
     }
 }

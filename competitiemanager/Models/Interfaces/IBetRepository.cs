@@ -7,7 +7,7 @@ namespace competitiemanager.Models.Interfaces
 {
     public interface IBetRepository
     {
-        Bet GetBetById(int BetId);
+        Bet GetBetById(int betId);
 
     }
 }
