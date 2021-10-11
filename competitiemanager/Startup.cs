@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 
 using competitiemanager.Models.Interfaces;
 using competitiemanager.Models.Repositories;
+using competitiemanager.Models;
 
 namespace competitiemanager
 {
@@ -28,7 +29,7 @@ namespace competitiemanager
 
 
             services.AddControllersWithViews();
-            services.AddRazorPages();
+
 
         }
 
@@ -49,8 +50,7 @@ namespace competitiemanager
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id}");
-                endpoints.MapRazorPages();
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

@@ -8,14 +8,14 @@ namespace competitiemanager.Models.Repositories
 {
     public class TeamRepository : ITeamRepository
     {
-        private readonly ITeamRepository _teamRepository = new TeamRepository();
+        //private readonly ITeamRepository _teamRepository = new TeamRepository();
         public IEnumerable<Team> AllTeams =>
             new List<Team>
             {
                 new Team {
                     TeamId = 1,
                     Name = "De Winnaars",
-                    Players = {
+                    Players = new List<string>{
                         "speler 1",
                         "speler 2",
                         "speler 3",
@@ -27,7 +27,7 @@ namespace competitiemanager.Models.Repositories
                 new Team{
                     TeamId = 2,
                     Name = "De Verliezers",
-                    Players = {
+                    Players = new List<string>{
                         "speler 1",
                         "speler 2",
                         "speler 3",
