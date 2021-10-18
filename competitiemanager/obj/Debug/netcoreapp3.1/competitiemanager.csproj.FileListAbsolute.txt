@@ -102,5 +102,7 @@ C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\bin\Debug\netcoreapp3.1\zh-H
 C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\competitiemanager.csproj.CoreCompileInputs.cache
 C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\competitiemanager.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\Razor\Views\Team\Teams.cshtml.g.cs
-C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\Razor\Views\Team\team2.cshtml.g.cs
+C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\bin\Debug\netcoreapp3.1\libman.json

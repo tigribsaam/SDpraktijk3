@@ -8,7 +8,7 @@ namespace competitiemanager.Models.Repositories
 {
     public class TeamInCompRepository : ITeamInCompRepository
     {
-        private readonly ITeamInCompRepository _teamInCompRepository = new TeamInCompRepository();
+        
         public TeamInCompetition GetTeamInCompById(int TeamId)
         {
             throw new NotImplementedException();

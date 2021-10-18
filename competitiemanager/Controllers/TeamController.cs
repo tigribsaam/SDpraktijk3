@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using competitiemanager.Models.Interfaces;
+using competitiemanager.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace competitiemanager.Controllers
@@ -18,7 +19,9 @@ namespace competitiemanager.Controllers
 
         public ViewResult List()
         {
-            return View(_teamRepository.AllTeams);
+            TeamViewModel teamViewModel = new TeamViewModel();
+            teamViewModel.Team = _teamRepository.AllTeams;
+            return View(teamViewModel);
         }
     }
 }

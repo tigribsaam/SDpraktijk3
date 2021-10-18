@@ -8,7 +8,7 @@ namespace competitiemanager.Models.Repositories
 {
     public class TeamRepository : ITeamRepository
     {
-        //private readonly ITeamRepository _teamRepository = new TeamRepository();
+       
         public IEnumerable<Team> AllTeams =>
             new List<Team>
             {

@@ -9,7 +9,7 @@ namespace competitiemanager.Models.Repositories
 
     public class UserRepository : IUserRepository
     {
-        private readonly IUserRepository _userRepository = new UserRepository();
+        
         public IEnumerable<User> AllUsers =>
             new List<User>
             {
@@ -17,7 +17,7 @@ namespace competitiemanager.Models.Repositories
                     UserId = 1,
                     Name = "Ad Random",
                     TotoScore = 0,
-                    Bets = {}}
+                    Bets = new List<Bet>{}}
             };
 
         public User GetUserById(int userId)

@@ -1,15 +1,9 @@
-﻿@model IEnumerable<competitiemanager.Models.Team>
+﻿@model TeamViewModel
 
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Teams</title>
-</head>
-<body>
+
     <h1>Alle teams</h1>
 
-    @foreach (var team in Model)
+    @foreach (var team in Model.Team)
     {
         <div>
             <h3>@team.Name</h3>
@@ -20,5 +14,3 @@
             } 
         </div> 
     }
-</body>
-</html>
