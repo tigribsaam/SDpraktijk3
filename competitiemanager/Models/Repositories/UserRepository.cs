@@ -9,7 +9,13 @@ namespace competitiemanager.Models.Repositories
 
     public class UserRepository : IUserRepository
     {
-        
+        private readonly AppDbContext _appDbConext;
+
+        public UserRepository(AppDbContext appDbContext)
+        {
+            _appDbConext = appDbContext;
+        }
+
         public IEnumerable<User> AllUsers =>
             new List<User>
             {

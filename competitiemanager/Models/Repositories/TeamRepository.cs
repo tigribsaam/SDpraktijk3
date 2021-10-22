@@ -1,4 +1,5 @@
 ﻿using competitiemanager.Models.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,35 +9,47 @@ namespace competitiemanager.Models.Repositories
 {
     public class TeamRepository : ITeamRepository
     {
-       
-        public IEnumerable<Team> AllTeams =>
-            new List<Team>
+        private readonly AppDbContext _appDbConext;
+
+        public TeamRepository(AppDbContext appDbContext)
+        {
+            _appDbConext = appDbContext;
+        }
+
+        public IEnumerable<Team> AllTeams
+        {
+            get
             {
-                new Team {
-                    TeamId = 1,
-                    Name = "De Winnaars",
-                    Players = new List<string>{
-                        "speler 1",
-                        "speler 2",
-                        "speler 3",
-                        "speler 4",
-                        "speler 5",
-                        "speler 6"},
-                    Location = "locatie A"
-                },
-                new Team{
-                    TeamId = 2,
-                    Name = "De Verliezers",
-                    Players = new List<string>{
-                        "speler 1",
-                        "speler 2",
-                        "speler 3",
-                        "speler 4",
-                        "speler 5",
-                        "speler 6"},
-                    Location = "locatie B"
-                }
-            };
+                return _appDbConext.Teams.Include(p => p.Players);
+            }
+        }
+            //new List<Team>
+            //{
+            //    new Team {
+            //        TeamId = 1,
+            //        Name = "De Winnaars",
+            //        Players = new List<string>{
+            //            "speler 1",
+            //            "speler 2",
+            //            "speler 3",
+            //            "speler 4",
+            //            "speler 5",
+            //            "speler 6"},
+            //        Location = "locatie A"
+            //    },
+            //    new Team{
+            //        TeamId = 2,
+            //        Name = "De Verliezers",
+            //        Players = new List<string>{
+            //            "speler 1",
+            //            "speler 2",
+            //            "speler 3",
+            //            "speler 4",
+            //            "speler 5",
+            //            "speler 6"},
+            //        Location = "locatie B"
+            //    }
+            //};
 
         public Team GetTeamById(int teamId)
         {

@@ -8,7 +8,13 @@ namespace competitiemanager.Models.Repositories
 {
     public class GameRepository : IGameRepository
     {
-        
+        private readonly AppDbContext _appDbConext;
+
+        public GameRepository(AppDbContext appDbContext)
+        {
+            _appDbConext = appDbContext;
+        }
+
         public Game GetGameById(int GameId)
         {
             throw new NotImplementedException();

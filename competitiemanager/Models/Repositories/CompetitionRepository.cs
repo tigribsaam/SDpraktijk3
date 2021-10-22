@@ -8,7 +8,12 @@ namespace competitiemanager.Models.Repositories
 {
     public class CompetitionRepository : ICompetitionRepository
     {
-        
+        private readonly AppDbContext _appDbConext;
+
+        public CompetitionRepository(AppDbContext appDbContext)
+        {
+            _appDbConext = appDbContext;
+        }
         public IEnumerable<Competition> AllCompetitions =>
             new List<Competition>
             {
