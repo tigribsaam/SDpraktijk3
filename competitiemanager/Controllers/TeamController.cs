@@ -23,5 +23,14 @@ namespace competitiemanager.Controllers
             teamViewModel.Team = _teamRepository.AllTeams;
             return View(teamViewModel);
         }
+        
+        public ActionResult Details(int id)
+        {
+            var team = _teamRepository.GetTeamById(id);
+            if (team == null)
+                return NotFound();
+            return View(team);
+
+        } 
     }
 }
