@@ -148,3 +148,4 @@ C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\comp
 C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\bin\Debug\netcoreapp3.1\Humanizer.dll
 C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\Razor\Views\Team\Details.cshtml.g.cs
+C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs

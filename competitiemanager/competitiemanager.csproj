@@ -22,6 +22,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\Bet\" />
+    <Folder Include="Views\Competition\" />
+    <Folder Include="Views\Game\" />
+    <Folder Include="Views\User\" />
+    <Folder Include="Views\TeamInComp\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
