@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using competitiemanager.Models;
 
 namespace competitiemanager.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211031093425_seeddatacomp")]
+    partial class seeddatacomp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -100,17 +102,6 @@ namespace competitiemanager.Migrations
                     b.HasIndex("HomeTeamId");
 
                     b.ToTable("Games");
-
-                    b.HasData(
-                        new
-                        {
-                            GameId = 1,
-                            AwayTeamId = 2,
-                            GoalsAway = 0,
-                            GoalsHome = 0,
-                            HomeTeamId = 1,
-                            StartDateAndTime = new DateTime(2021, 10, 31, 11, 0, 36, 742, DateTimeKind.Local).AddTicks(292)
-                        });
                 });
 
             modelBuilder.Entity("competitiemanager.Models.Player", b =>
@@ -258,7 +249,7 @@ namespace competitiemanager.Migrations
                     b.Property<int>("GamesPlayed")
                         .HasColumnType("int");
 
-                    b.Property<int>("GamesTied")
+                    b.Property<int>("GamesPlayedDraw")
                         .HasColumnType("int");
 
                     b.Property<int>("GamesWon")
@@ -277,32 +268,6 @@ namespace competitiemanager.Migrations
                     b.HasIndex("TeamId");
 
                     b.ToTable("TeamInComps");
-
-                    b.HasData(
-                        new
-                        {
-                            TeamInCompetitionId = 1,
-                            CompetitionId = 1,
-                            CounterGoals = 0,
-                            GamesLost = 0,
-                            GamesPlayed = 0,
-                            GamesTied = 0,
-                            GamesWon = 0,
-                            Goals = 0,
-                            TeamId = 1
-                        },
-                        new
-                        {
-                            TeamInCompetitionId = 2,
-                            CompetitionId = 1,
-                            CounterGoals = 0,
-                            GamesLost = 0,
-                            GamesPlayed = 0,
-                            GamesTied = 0,
-                            GamesWon = 0,
-                            Goals = 0,
-                            TeamId = 2
-                        });
                 });
 
             modelBuilder.Entity("competitiemanager.Models.User", b =>

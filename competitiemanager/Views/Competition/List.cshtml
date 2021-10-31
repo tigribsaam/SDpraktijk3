@@ -1,0 +1,33 @@
+﻿@model CompetitionListViewModel
+
+ <h1>Competition</h1>
+
+@foreach (var comp in Model.Competition)
+{
+<div>
+    <a>@comp.Name</a>
+    @foreach (var teamInComp in comp.Teams)
+    {
+        @foreach (var team in Model.Team)
+        {
+            @if(teamInComp.TeamId == team.TeamId)
+            {
+                <p>@team.Name</p>
+            }
+        }
+       
+        
+        @*@if (team.TeamId ==)
+        {
+            <p>Model.Team.TeamId</p>
+            <p>Model.Team.Name</p>
+        }*@
+
+    }
+    @foreach (var game in comp.Games)
+    {
+        <p>@game.GameId</p>
+    }
+
+</div>
+} 

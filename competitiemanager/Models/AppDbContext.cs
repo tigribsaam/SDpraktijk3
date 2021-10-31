@@ -84,6 +84,55 @@ namespace competitiemanager.Models
                     TotoScore = 0,
                     Bets = null
                 });
+
+            modelBuilder.Entity<Competition>().HasData(
+                new Competition
+                {
+                    CompetitionId = 1,
+                    Name = "test competitie 1",
+                    Teams = new List<TeamInCompetition>(),
+                    Games = new List<Game>()
+                });
+
+            modelBuilder.Entity<TeamInCompetition>().HasData(
+                new TeamInCompetition
+                {
+                    TeamInCompetitionId = 1,
+                    TeamId = 1,
+                    CompetitionId = 1,
+                    GamesPlayed = 0,
+                    GamesWon = 0,
+                    GamesLost = 0,
+                    GamesTied = 0,
+                    Goals = 0,
+                    CounterGoals = 0
+                },
+                new TeamInCompetition
+                {
+                    TeamInCompetitionId = 2,
+                    TeamId = 2,
+                    CompetitionId = 1,
+                    GamesPlayed = 0,
+                    GamesWon = 0,
+                    GamesLost = 0,
+                    GamesTied = 0,
+                    Goals = 0,
+                    CounterGoals = 0
+                }
+                );
+
+            modelBuilder.Entity<Game>().HasData(
+                new Game
+                {
+                    GameId = 1,
+                    HomeTeamId = 1,
+                    AwayTeamId = 2,
+                    StartDateAndTime = DateTime.Now,
+                    GoalsHome = 0,
+                    GoalsAway = 0
+
+                });
+
         }
     }
 }

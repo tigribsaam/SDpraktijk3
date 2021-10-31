@@ -1,3 +1,15 @@
 ﻿body {
-  background-color: palevioletred
+  background-color: mediumpurple;
+}
+
+nav {
+    display: inline;
+}
+
+li{
+    display: inline;
+}
+
+h1 {
+    font-family: Comic Sans MS
 }

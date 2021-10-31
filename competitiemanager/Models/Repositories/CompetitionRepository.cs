@@ -1,4 +1,5 @@
 ﻿using competitiemanager.Models.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +15,22 @@ namespace competitiemanager.Models.Repositories
         {
             _appDbConext = appDbContext;
         }
-        public IEnumerable<Competition> AllCompetitions =>
-            new List<Competition>
+        public IEnumerable<Competition> AllCompetitions
+        {
+            get
             {
-                //new Competition {CompId = 1, Name= "comp 1", Games, Teams}
-            };
+                var comps = _appDbConext.Competitions.Include(t => t.Teams).Include(g => g.Games);
+
+                //insert team objects into Teams
+
+                //foreach (var comp in comps)
+                //{
+                //    foreach (var team in Teams)
+                //    comp.Teams = 
+                //}
+                return comps;
+            }
+        }
 
         public Competition GetCompById(int CompId)
         {
