@@ -10,6 +10,7 @@ namespace competitiemanager.Models
     {
         [Key]
         public int GameId { get; set; }
+        public int CompetitionId { get; set; }
         public int HomeTeamId { get; set; }
         public int AwayTeamId { get; set; }
         public Team HomeTeam { get; set; }
@@ -17,5 +18,7 @@ namespace competitiemanager.Models
         public DateTime StartDateAndTime { get; set; }
         public int GoalsHome { get; set; }
         public int GoalsAway { get; set; }
+        // 0 not started yet, 1 started, 2 finished
+        public int Status { get; set; }
     }
 }

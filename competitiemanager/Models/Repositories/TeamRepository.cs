@@ -23,33 +23,6 @@ namespace competitiemanager.Models.Repositories
                 return _appDbConext.Teams.Include(p => p.Players);
             }
         }
-            //new List<Team>
-            //{
-            //    new Team {
-            //        TeamId = 1,
-            //        Name = "De Winnaars",
-            //        Players = new List<string>{
-            //            "speler 1",
-            //            "speler 2",
-            //            "speler 3",
-            //            "speler 4",
-            //            "speler 5",
-            //            "speler 6"},
-            //        Location = "locatie A"
-            //    },
-            //    new Team{
-            //        TeamId = 2,
-            //        Name = "De Verliezers",
-            //        Players = new List<string>{
-            //            "speler 1",
-            //            "speler 2",
-            //            "speler 3",
-            //            "speler 4",
-            //            "speler 5",
-            //            "speler 6"},
-            //        Location = "locatie B"
-            //    }
-            //};
 
         public Team GetTeamById(int teamId)
         {

@@ -1,4 +1,5 @@
 ﻿using competitiemanager.Models.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,14 @@ namespace competitiemanager.Models.Repositories
         public TeamInCompRepository(AppDbContext appDbContext)
         {
             _appDbConext = appDbContext;
+        }
+
+        public IEnumerable<TeamInCompetition> AllTeamsInComp
+        {
+            get
+            {
+                return _appDbConext.TeamInComps.Include(t => t.Team).Include(c => c.Competition);
+            }
         }
 
         public TeamInCompetition GetTeamInCompById(int TeamId)

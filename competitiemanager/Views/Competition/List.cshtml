@@ -5,29 +5,19 @@
 @foreach (var comp in Model.Competition)
 {
 <div>
-    <a>@comp.Name</a>
-    @foreach (var teamInComp in comp.Teams)
-    {
-        @foreach (var team in Model.Team)
-        {
-            @if(teamInComp.TeamId == team.TeamId)
-            {
-                <p>@team.Name</p>
-            }
-        }
-       
-        
-        @*@if (team.TeamId ==)
-        {
-            <p>Model.Team.TeamId</p>
-            <p>Model.Team.Name</p>
-        }*@
+    <a asp-controller="Competition" asp-action="Details" asp-route-id ="@comp.CompetitionId">@comp.Name</a>
 
+    <h3>Teams:</h3>
+    @foreach (var team in comp.Teams)
+    {
+       <p>@team.Team.Name</p>
     }
+
+    @*<h3>Wedstrijden:</h3>
     @foreach (var game in comp.Games)
     {
-        <p>@game.GameId</p>
-    }
+        <p>@game.HomeTeam.Name vs. @game.AwayTeam.Name</p>
+    }*@
 
 </div>
 } 

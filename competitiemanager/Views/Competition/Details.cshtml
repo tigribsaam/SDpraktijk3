@@ -1,0 +1,33 @@
+﻿@model Competition
+
+<h2>@Model.Name</h2>
+<div>
+
+    <h3>Teams:</h3>
+    @foreach (var team in Model.Teams)
+    {
+        <p>@team.Team.Name</p>
+    }
+
+    <h3>Wedstrijden:</h3>
+    @foreach (var game in Model.Games)
+    {
+        <p>@game.HomeTeam.Name vs. @game.AwayTeam.Name</p>
+        <p>@game.StartDateAndTime.ToString("dd-MM-yyyy")</p>
+        @switch (game.Status)
+        {
+            case 0:
+                <p>Nog niet gespeeld</p>
+                break;
+            case 1:
+                <p>Bezig</p>
+                <p>@game.GoalsHome - @game.GoalsAway</p>
+                break;
+            case 3:
+                <p>afgelopen</p>
+                <p>@game.GoalsHome - @game.GoalsAway</p>
+                break;
+        }
+    }
+
+</div>

@@ -76,7 +76,7 @@ namespace competitiemanager.Migrations
                     b.Property<int>("AwayTeamId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CompetitionId")
+                    b.Property<int>("CompetitionId")
                         .HasColumnType("int");
 
                     b.Property<int>("GoalsAway")
@@ -90,6 +90,9 @@ namespace competitiemanager.Migrations
 
                     b.Property<DateTime>("StartDateAndTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.HasKey("GameId");
 
@@ -106,10 +109,23 @@ namespace competitiemanager.Migrations
                         {
                             GameId = 1,
                             AwayTeamId = 2,
+                            CompetitionId = 1,
                             GoalsAway = 0,
                             GoalsHome = 0,
                             HomeTeamId = 1,
-                            StartDateAndTime = new DateTime(2021, 10, 31, 11, 0, 36, 742, DateTimeKind.Local).AddTicks(292)
+                            StartDateAndTime = new DateTime(2021, 10, 31, 14, 36, 24, 249, DateTimeKind.Local).AddTicks(7040),
+                            Status = 0
+                        },
+                        new
+                        {
+                            GameId = 2,
+                            AwayTeamId = 1,
+                            CompetitionId = 1,
+                            GoalsAway = 0,
+                            GoalsHome = 0,
+                            HomeTeamId = 2,
+                            StartDateAndTime = new DateTime(2021, 10, 31, 14, 36, 24, 255, DateTimeKind.Local).AddTicks(1284),
+                            Status = 0
                         });
                 });
 
@@ -359,7 +375,9 @@ namespace competitiemanager.Migrations
 
                     b.HasOne("competitiemanager.Models.Competition", null)
                         .WithMany("Games")
-                        .HasForeignKey("CompetitionId");
+                        .HasForeignKey("CompetitionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("competitiemanager.Models.Team", "HomeTeam")
                         .WithMany()

@@ -19,22 +19,14 @@ namespace competitiemanager.Models.Repositories
         {
             get
             {
-                var comps = _appDbConext.Competitions.Include(t => t.Teams).Include(g => g.Games);
-
-                //insert team objects into Teams
-
-                //foreach (var comp in comps)
-                //{
-                //    foreach (var team in Teams)
-                //    comp.Teams = 
-                //}
+                var comps = _appDbConext.Competitions.Include(t => t.Teams).ThenInclude(t => t.Team).Include(g => g.Games);
                 return comps;
             }
         }
 
-        public Competition GetCompById(int CompId)
+        public Competition GetCompById(int compId)
         {
-            throw new NotImplementedException();
+            return AllCompetitions.FirstOrDefault(c => c.CompetitionId == compId);
         }
     }
 }

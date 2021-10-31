@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace competitiemanager.Migrations
 {
-    public partial class initial2 : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -55,12 +55,13 @@ namespace competitiemanager.Migrations
                 {
                     GameId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    CompetitionId = table.Column<int>(type: "int", nullable: false),
                     HomeTeamId = table.Column<int>(type: "int", nullable: false),
                     AwayTeamId = table.Column<int>(type: "int", nullable: false),
                     StartDateAndTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     GoalsHome = table.Column<int>(type: "int", nullable: false),
                     GoalsAway = table.Column<int>(type: "int", nullable: false),
-                    CompetitionId = table.Column<int>(type: "int", nullable: true)
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -70,7 +71,7 @@ namespace competitiemanager.Migrations
                         column: x => x.CompetitionId,
                         principalTable: "Competitions",
                         principalColumn: "CompetitionId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Games_Teams_AwayTeamId",
                         column: x => x.AwayTeamId,
@@ -116,7 +117,7 @@ namespace competitiemanager.Migrations
                     GamesPlayed = table.Column<int>(type: "int", nullable: false),
                     GamesWon = table.Column<int>(type: "int", nullable: false),
                     GamesLost = table.Column<int>(type: "int", nullable: false),
-                    GamesPlayedDraw = table.Column<int>(type: "int", nullable: false),
+                    GamesTied = table.Column<int>(type: "int", nullable: false),
                     Goals = table.Column<int>(type: "int", nullable: false),
                     CounterGoals = table.Column<int>(type: "int", nullable: false)
                 },
@@ -165,19 +166,32 @@ namespace competitiemanager.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Teams",
-                columns: new[] { "TeamId", "Location", "Name" },
-                values: new object[] { 1, "locatie A", "De Winnaars" });
+                table: "Competitions",
+                columns: new[] { "CompetitionId", "Name" },
+                values: new object[] { 1, "test competitie 1" });
 
             migrationBuilder.InsertData(
                 table: "Teams",
                 columns: new[] { "TeamId", "Location", "Name" },
-                values: new object[] { 2, "locatie B", "De Verliezers" });
+                values: new object[,]
+                {
+                    { 1, "locatie A", "De Winnaars" },
+                    { 2, "locatie B", "De Verliezers" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "UserId", "Name", "Role", "TotoScore" },
                 values: new object[] { 1, "Ad Random", null, 0 });
+
+            migrationBuilder.InsertData(
+                table: "Games",
+                columns: new[] { "GameId", "AwayTeamId", "CompetitionId", "GoalsAway", "GoalsHome", "HomeTeamId", "StartDateAndTime", "Status" },
+                values: new object[,]
+                {
+                    { 1, 2, 1, 0, 0, 1, new DateTime(2021, 10, 31, 14, 36, 24, 249, DateTimeKind.Local).AddTicks(7040), 0 },
+                    { 2, 1, 1, 0, 0, 2, new DateTime(2021, 10, 31, 14, 36, 24, 255, DateTimeKind.Local).AddTicks(1284), 0 }
+                });
 
             migrationBuilder.InsertData(
                 table: "Players",
@@ -196,6 +210,15 @@ namespace competitiemanager.Migrations
                     { 10, "speler 10", 2 },
                     { 11, "speler 11", 2 },
                     { 12, "speler 12", 2 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "TeamInComps",
+                columns: new[] { "TeamInCompetitionId", "CompetitionId", "CounterGoals", "GamesLost", "GamesPlayed", "GamesTied", "GamesWon", "Goals", "TeamId" },
+                values: new object[,]
+                {
+                    { 1, 1, 0, 0, 0, 0, 0, 0, 1 },
+                    { 2, 1, 0, 0, 0, 0, 0, 0, 2 }
                 });
 
             migrationBuilder.CreateIndex(

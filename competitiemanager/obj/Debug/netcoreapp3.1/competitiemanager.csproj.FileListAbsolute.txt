@@ -154,3 +154,4 @@ C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\Razo
 C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\Razor\Views\TeamInComp\Index.cshtml.g.cs
 C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
 C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\Razor\Views\Competition\List.cshtml.g.cs
+C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\Razor\Views\Competition\Details.cshtml.g.cs

@@ -10,8 +10,8 @@ using competitiemanager.Models;
 namespace competitiemanager.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20211022115049_initial2")]
-    partial class initial2
+    [Migration("20211031133625_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -59,6 +59,13 @@ namespace competitiemanager.Migrations
                     b.HasKey("CompetitionId");
 
                     b.ToTable("Competitions");
+
+                    b.HasData(
+                        new
+                        {
+                            CompetitionId = 1,
+                            Name = "test competitie 1"
+                        });
                 });
 
             modelBuilder.Entity("competitiemanager.Models.Game", b =>
@@ -71,7 +78,7 @@ namespace competitiemanager.Migrations
                     b.Property<int>("AwayTeamId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CompetitionId")
+                    b.Property<int>("CompetitionId")
                         .HasColumnType("int");
 
                     b.Property<int>("GoalsAway")
@@ -86,6 +93,9 @@ namespace competitiemanager.Migrations
                     b.Property<DateTime>("StartDateAndTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.HasKey("GameId");
 
                     b.HasIndex("AwayTeamId");
@@ -95,6 +105,30 @@ namespace competitiemanager.Migrations
                     b.HasIndex("HomeTeamId");
 
                     b.ToTable("Games");
+
+                    b.HasData(
+                        new
+                        {
+                            GameId = 1,
+                            AwayTeamId = 2,
+                            CompetitionId = 1,
+                            GoalsAway = 0,
+                            GoalsHome = 0,
+                            HomeTeamId = 1,
+                            StartDateAndTime = new DateTime(2021, 10, 31, 14, 36, 24, 249, DateTimeKind.Local).AddTicks(7040),
+                            Status = 0
+                        },
+                        new
+                        {
+                            GameId = 2,
+                            AwayTeamId = 1,
+                            CompetitionId = 1,
+                            GoalsAway = 0,
+                            GoalsHome = 0,
+                            HomeTeamId = 2,
+                            StartDateAndTime = new DateTime(2021, 10, 31, 14, 36, 24, 255, DateTimeKind.Local).AddTicks(1284),
+                            Status = 0
+                        });
                 });
 
             modelBuilder.Entity("competitiemanager.Models.Player", b =>
@@ -242,7 +276,7 @@ namespace competitiemanager.Migrations
                     b.Property<int>("GamesPlayed")
                         .HasColumnType("int");
 
-                    b.Property<int>("GamesPlayedDraw")
+                    b.Property<int>("GamesTied")
                         .HasColumnType("int");
 
                     b.Property<int>("GamesWon")
@@ -261,6 +295,32 @@ namespace competitiemanager.Migrations
                     b.HasIndex("TeamId");
 
                     b.ToTable("TeamInComps");
+
+                    b.HasData(
+                        new
+                        {
+                            TeamInCompetitionId = 1,
+                            CompetitionId = 1,
+                            CounterGoals = 0,
+                            GamesLost = 0,
+                            GamesPlayed = 0,
+                            GamesTied = 0,
+                            GamesWon = 0,
+                            Goals = 0,
+                            TeamId = 1
+                        },
+                        new
+                        {
+                            TeamInCompetitionId = 2,
+                            CompetitionId = 1,
+                            CounterGoals = 0,
+                            GamesLost = 0,
+                            GamesPlayed = 0,
+                            GamesTied = 0,
+                            GamesWon = 0,
+                            Goals = 0,
+                            TeamId = 2
+                        });
                 });
 
             modelBuilder.Entity("competitiemanager.Models.User", b =>
@@ -317,7 +377,9 @@ namespace competitiemanager.Migrations
 
                     b.HasOne("competitiemanager.Models.Competition", null)
                         .WithMany("Games")
-                        .HasForeignKey("CompetitionId");
+                        .HasForeignKey("CompetitionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("competitiemanager.Models.Team", "HomeTeam")
                         .WithMany()

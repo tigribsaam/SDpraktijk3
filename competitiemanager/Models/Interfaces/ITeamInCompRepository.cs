@@ -7,6 +7,7 @@ namespace competitiemanager.Models.Interfaces
 {
     public interface ITeamInCompRepository
     {
+        IEnumerable<TeamInCompetition> AllTeamsInComp { get; }
         TeamInCompetition GetTeamInCompById(int teamId);
         
     }

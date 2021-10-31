@@ -125,11 +125,21 @@ namespace competitiemanager.Models
                 new Game
                 {
                     GameId = 1,
+                    CompetitionId = 1,
                     HomeTeamId = 1,
                     AwayTeamId = 2,
                     StartDateAndTime = DateTime.Now,
-                    GoalsHome = 0,
-                    GoalsAway = 0
+                    Status = 0
+
+                },
+                new Game
+                {
+                    GameId = 2,
+                    CompetitionId = 1,
+                    HomeTeamId = 2,
+                    AwayTeamId = 1,
+                    StartDateAndTime = DateTime.Now,
+                    Status = 0
 
                 });
 
