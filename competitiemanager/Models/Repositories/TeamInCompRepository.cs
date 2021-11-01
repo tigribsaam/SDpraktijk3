@@ -20,13 +20,14 @@ namespace competitiemanager.Models.Repositories
         {
             get
             {
-                return _appDbConext.TeamInComps.Include(t => t.Team).Include(c => c.Competition);
+                return _appDbConext.TeamInComps.Include(t => t.Team).ThenInclude(p => p.Players).Include(c => c.Competition);
             }
         }
 
-        public TeamInCompetition GetTeamInCompById(int TeamId)
+        public TeamInCompetition GetTeamInCompById(int teamInCompId)
         {
-            throw new NotImplementedException();
+            return AllTeamsInComp.FirstOrDefault(t => t.TeamInCompetitionId == teamInCompId);
         }
     }
+    
 }

@@ -1,0 +1,17 @@
+﻿@model TeamInCompetition
+
+<h2>@Model.Team.Name</h2>
+<h2>@Model.Competition.Name</h2>
+<p>@Model.Team.Location</p>
+
+<p>Wedstrijden gespeeld: @Model.GamesPlayed</p>
+<p>Wedstrijden verloren: @Model.GamesLost</p>
+<p>Wedstrijden gewonnen: @Model.GamesWon</p>
+<p>Wedstrijden Gelijk gespeeld: @Model.GamesTied</p>
+<p>Doelsaldo: @(Model.Goals - Model.CounterGoals)</p>
+    @foreach (var playa in Model.Team.Players)
+    {
+        <p>@playa.Name</p>
+    }
+
+
