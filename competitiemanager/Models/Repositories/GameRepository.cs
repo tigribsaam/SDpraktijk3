@@ -1,4 +1,5 @@
 ﻿using competitiemanager.Models.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,17 @@ namespace competitiemanager.Models.Repositories
             _appDbConext = appDbContext;
         }
 
-        public Game GetGameById(int GameId)
+        public IEnumerable<Game> AllGames
         {
-            throw new NotImplementedException();
+            get
+            {
+                return _appDbConext.Games.Include(t => t.HomeTeam).ThenInclude(t => t.Team).Include(t => t.AwayTeam).ThenInclude(t => t.Team);
+            }
+        }
+
+        public Game GetGameById(int gameId)
+        {
+            return AllGames.FirstOrDefault(g => g.GameId == gameId);
         }
     }
 }

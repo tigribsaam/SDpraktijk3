@@ -12,7 +12,7 @@
     <h3>Wedstrijden:</h3>
     @foreach (var game in Model.Games)
     {
-        <p>@game.HomeTeam.Name vs. @game.AwayTeam.Name</p>
+        <a asp-controller="Game" asp-action="Details" asp-route-id="@game.GameId">@game.HomeTeam.Team.Name vs. @game.AwayTeam.Team.Name</a>
         <p>@game.StartDateAndTime.ToString("dd-MM-yyyy")</p>
         @switch (game.Status)
         {

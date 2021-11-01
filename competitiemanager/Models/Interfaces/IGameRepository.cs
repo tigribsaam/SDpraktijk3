@@ -7,6 +7,7 @@ namespace competitiemanager.Models.Interfaces
 {
     public interface IGameRepository
     {
+        IEnumerable<Game> AllGames { get; }
         Game GetGameById(int gameId);
     }
 }

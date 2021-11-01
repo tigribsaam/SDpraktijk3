@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Birgi\\GitHub\\SDpraktijk3\\Competitiemanager\\competitiemanager.csproj": {}
+    "C:\\Users\\Birgi\\GitHub\\SDpraktijk3\\competitiemanager\\competitiemanager.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Birgi\\GitHub\\SDpraktijk3\\Competitiemanager\\competitiemanager.csproj": {
+    "C:\\Users\\Birgi\\GitHub\\SDpraktijk3\\competitiemanager\\competitiemanager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Birgi\\GitHub\\SDpraktijk3\\Competitiemanager\\competitiemanager.csproj",
+        "projectUniqueName": "C:\\Users\\Birgi\\GitHub\\SDpraktijk3\\competitiemanager\\competitiemanager.csproj",
         "projectName": "competitiemanager",
-        "projectPath": "C:\\Users\\Birgi\\GitHub\\SDpraktijk3\\Competitiemanager\\competitiemanager.csproj",
+        "projectPath": "C:\\Users\\Birgi\\GitHub\\SDpraktijk3\\competitiemanager\\competitiemanager.csproj",
         "packagesPath": "C:\\Users\\Birgi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Birgi\\GitHub\\SDpraktijk3\\Competitiemanager\\obj\\",
+        "outputPath": "C:\\Users\\Birgi\\GitHub\\SDpraktijk3\\competitiemanager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Birgi\\AppData\\Roaming\\NuGet\\NuGet.Config",

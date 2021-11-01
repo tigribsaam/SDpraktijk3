@@ -63,6 +63,11 @@ namespace competitiemanager.Migrations
                         {
                             CompetitionId = 1,
                             Name = "test competitie 1"
+                        },
+                        new
+                        {
+                            CompetitionId = 2,
+                            Name = "test competitie 2"
                         });
                 });
 
@@ -113,7 +118,7 @@ namespace competitiemanager.Migrations
                             GoalsAway = 0,
                             GoalsHome = 0,
                             HomeTeamId = 1,
-                            StartDateAndTime = new DateTime(2021, 10, 31, 14, 36, 24, 249, DateTimeKind.Local).AddTicks(7040),
+                            StartDateAndTime = new DateTime(2021, 11, 1, 10, 11, 37, 183, DateTimeKind.Local).AddTicks(7177),
                             Status = 0
                         },
                         new
@@ -124,8 +129,19 @@ namespace competitiemanager.Migrations
                             GoalsAway = 0,
                             GoalsHome = 0,
                             HomeTeamId = 2,
-                            StartDateAndTime = new DateTime(2021, 10, 31, 14, 36, 24, 255, DateTimeKind.Local).AddTicks(1284),
+                            StartDateAndTime = new DateTime(2021, 11, 1, 10, 11, 37, 189, DateTimeKind.Local).AddTicks(4274),
                             Status = 0
+                        },
+                        new
+                        {
+                            GameId = 3,
+                            AwayTeamId = 1,
+                            CompetitionId = 2,
+                            GoalsAway = 3,
+                            GoalsHome = 0,
+                            HomeTeamId = 2,
+                            StartDateAndTime = new DateTime(2021, 11, 1, 10, 11, 37, 189, DateTimeKind.Local).AddTicks(4369),
+                            Status = 3
                         });
                 });
 
@@ -367,7 +383,7 @@ namespace competitiemanager.Migrations
 
             modelBuilder.Entity("competitiemanager.Models.Game", b =>
                 {
-                    b.HasOne("competitiemanager.Models.Team", "AwayTeam")
+                    b.HasOne("competitiemanager.Models.TeamInCompetition", "AwayTeam")
                         .WithMany()
                         .HasForeignKey("AwayTeamId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -379,7 +395,7 @@ namespace competitiemanager.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("competitiemanager.Models.Team", "HomeTeam")
+                    b.HasOne("competitiemanager.Models.TeamInCompetition", "HomeTeam")
                         .WithMany()
                         .HasForeignKey("HomeTeamId")
                         .OnDelete(DeleteBehavior.Restrict)

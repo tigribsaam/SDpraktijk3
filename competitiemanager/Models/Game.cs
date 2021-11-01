@@ -13,8 +13,8 @@ namespace competitiemanager.Models
         public int CompetitionId { get; set; }
         public int HomeTeamId { get; set; }
         public int AwayTeamId { get; set; }
-        public Team HomeTeam { get; set; }
-        public Team AwayTeam { get; set; }
+        public TeamInCompetition HomeTeam { get; set; }
+        public TeamInCompetition AwayTeam { get; set; }
         public DateTime StartDateAndTime { get; set; }
         public int GoalsHome { get; set; }
         public int GoalsAway { get; set; }

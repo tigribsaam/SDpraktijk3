@@ -50,43 +50,6 @@ namespace competitiemanager.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Games",
-                columns: table => new
-                {
-                    GameId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CompetitionId = table.Column<int>(type: "int", nullable: false),
-                    HomeTeamId = table.Column<int>(type: "int", nullable: false),
-                    AwayTeamId = table.Column<int>(type: "int", nullable: false),
-                    StartDateAndTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    GoalsHome = table.Column<int>(type: "int", nullable: false),
-                    GoalsAway = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Games", x => x.GameId);
-                    table.ForeignKey(
-                        name: "FK_Games_Competitions_CompetitionId",
-                        column: x => x.CompetitionId,
-                        principalTable: "Competitions",
-                        principalColumn: "CompetitionId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Games_Teams_AwayTeamId",
-                        column: x => x.AwayTeamId,
-                        principalTable: "Teams",
-                        principalColumn: "TeamId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Games_Teams_HomeTeamId",
-                        column: x => x.HomeTeamId,
-                        principalTable: "Teams",
-                        principalColumn: "TeamId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Players",
                 columns: table => new
                 {
@@ -139,6 +102,43 @@ namespace competitiemanager.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Games",
+                columns: table => new
+                {
+                    GameId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CompetitionId = table.Column<int>(type: "int", nullable: false),
+                    HomeTeamId = table.Column<int>(type: "int", nullable: false),
+                    AwayTeamId = table.Column<int>(type: "int", nullable: false),
+                    StartDateAndTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    GoalsHome = table.Column<int>(type: "int", nullable: false),
+                    GoalsAway = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Games", x => x.GameId);
+                    table.ForeignKey(
+                        name: "FK_Games_Competitions_CompetitionId",
+                        column: x => x.CompetitionId,
+                        principalTable: "Competitions",
+                        principalColumn: "CompetitionId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Games_TeamInComps_AwayTeamId",
+                        column: x => x.AwayTeamId,
+                        principalTable: "TeamInComps",
+                        principalColumn: "TeamInCompetitionId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Games_TeamInComps_HomeTeamId",
+                        column: x => x.HomeTeamId,
+                        principalTable: "TeamInComps",
+                        principalColumn: "TeamInCompetitionId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Bets",
                 columns: table => new
                 {
@@ -168,7 +168,11 @@ namespace competitiemanager.Migrations
             migrationBuilder.InsertData(
                 table: "Competitions",
                 columns: new[] { "CompetitionId", "Name" },
-                values: new object[] { 1, "test competitie 1" });
+                values: new object[,]
+                {
+                    { 1, "test competitie 1" },
+                    { 2, "test competitie 2" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Teams",
@@ -183,15 +187,6 @@ namespace competitiemanager.Migrations
                 table: "Users",
                 columns: new[] { "UserId", "Name", "Role", "TotoScore" },
                 values: new object[] { 1, "Ad Random", null, 0 });
-
-            migrationBuilder.InsertData(
-                table: "Games",
-                columns: new[] { "GameId", "AwayTeamId", "CompetitionId", "GoalsAway", "GoalsHome", "HomeTeamId", "StartDateAndTime", "Status" },
-                values: new object[,]
-                {
-                    { 1, 2, 1, 0, 0, 1, new DateTime(2021, 10, 31, 14, 36, 24, 249, DateTimeKind.Local).AddTicks(7040), 0 },
-                    { 2, 1, 1, 0, 0, 2, new DateTime(2021, 10, 31, 14, 36, 24, 255, DateTimeKind.Local).AddTicks(1284), 0 }
-                });
 
             migrationBuilder.InsertData(
                 table: "Players",
@@ -220,6 +215,21 @@ namespace competitiemanager.Migrations
                     { 1, 1, 0, 0, 0, 0, 0, 0, 1 },
                     { 2, 1, 0, 0, 0, 0, 0, 0, 2 }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Games",
+                columns: new[] { "GameId", "AwayTeamId", "CompetitionId", "GoalsAway", "GoalsHome", "HomeTeamId", "StartDateAndTime", "Status" },
+                values: new object[] { 1, 2, 1, 0, 0, 1, new DateTime(2021, 11, 1, 10, 11, 37, 183, DateTimeKind.Local).AddTicks(7177), 0 });
+
+            migrationBuilder.InsertData(
+                table: "Games",
+                columns: new[] { "GameId", "AwayTeamId", "CompetitionId", "GoalsAway", "GoalsHome", "HomeTeamId", "StartDateAndTime", "Status" },
+                values: new object[] { 2, 1, 1, 0, 0, 2, new DateTime(2021, 11, 1, 10, 11, 37, 189, DateTimeKind.Local).AddTicks(4274), 0 });
+
+            migrationBuilder.InsertData(
+                table: "Games",
+                columns: new[] { "GameId", "AwayTeamId", "CompetitionId", "GoalsAway", "GoalsHome", "HomeTeamId", "StartDateAndTime", "Status" },
+                values: new object[] { 3, 1, 2, 3, 0, 2, new DateTime(2021, 11, 1, 10, 11, 37, 189, DateTimeKind.Local).AddTicks(4369), 3 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Bets_GameId",
@@ -271,13 +281,13 @@ namespace competitiemanager.Migrations
                 name: "Players");
 
             migrationBuilder.DropTable(
-                name: "TeamInComps");
-
-            migrationBuilder.DropTable(
                 name: "Games");
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "TeamInComps");
 
             migrationBuilder.DropTable(
                 name: "Competitions");

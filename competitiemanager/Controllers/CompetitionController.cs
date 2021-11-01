@@ -34,16 +34,6 @@ namespace competitiemanager.Controllers
             var comp = _competitionRepository.GetCompById(id);
             if (comp == null)
                 return NotFound();
-
-            //foreach (var teamInComp in _teamInCompRepository.AllTeamsInComp)
-            //{
-            //    if (teamInComp.CompetitionId == id)
-            //    {
-            //        comp.Teams.Add(teamInComp);
-            //        System.Diagnostics.Debug.WriteLine(teamInComp);
-            //    }
-            //}
-
             return View(comp);
 
         }

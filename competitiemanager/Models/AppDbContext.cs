@@ -92,6 +92,13 @@ namespace competitiemanager.Models
                     Name = "test competitie 1",
                     Teams = new List<TeamInCompetition>(),
                     Games = new List<Game>()
+                },
+                new Competition
+                {
+                    CompetitionId = 2,
+                    Name = "test competitie 2",
+                    Teams = new List<TeamInCompetition>(),
+                    Games = new List<Game>()
                 });
 
             modelBuilder.Entity<TeamInCompetition>().HasData(
@@ -140,6 +147,18 @@ namespace competitiemanager.Models
                     AwayTeamId = 1,
                     StartDateAndTime = DateTime.Now,
                     Status = 0
+
+                },
+                new Game
+                {
+                    GameId = 3,
+                    CompetitionId = 2,
+                    HomeTeamId = 2,
+                    AwayTeamId = 1,
+                    StartDateAndTime = DateTime.Now,
+                    Status = 3,
+                    GoalsHome = 0,
+                    GoalsAway = 3
 
                 });
 
