@@ -58,6 +58,42 @@ namespace competitiemanager.Models
                     {   
                     },
                     Location = "locatie B"
+                },
+                new Team
+                {
+                    TeamId = 3,
+                    Name = "Team C",
+                    Players = new List<Player>()
+                    {
+                    },
+                    Location = "locatie C"
+                },
+                new Team
+                {
+                    TeamId = 4,
+                    Name = "Team D",
+                    Players = new List<Player>()
+                    {
+                    },
+                    Location = "locatie D"
+                },
+                new Team
+                {
+                    TeamId = 5,
+                    Name = "Team E",
+                    Players = new List<Player>()
+                    {
+                    },
+                    Location = "locatie E"
+                },
+                new Team
+                {
+                    TeamId = 6,
+                    Name = "Team F",
+                    Players = new List<Player>()
+                    {
+                    },
+                    Location = "locatie F"
                 });
 
             modelBuilder.Entity<Player>().HasData(

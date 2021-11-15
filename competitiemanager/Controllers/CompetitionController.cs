@@ -29,13 +29,33 @@ namespace competitiemanager.Controllers
             return View(CompListViewModel);
         }
 
-        public ActionResult Details(int id)
+        public IActionResult Details(int id)
         {
             var comp = _competitionRepository.GetCompById(id);
             if (comp == null)
                 return NotFound();
             return View(comp);
 
+        }
+
+        public IActionResult NewComp()
+        {
+            var model = new NewCompViewModel { };
+            ViewBag.Teams = _teamRepository.AllTeams;
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult NewComp(NewCompViewModel model)
+        {
+            ViewBag.Teams = _teamRepository.AllTeams;
+
+            if (ModelState.IsValid)
+            {
+                _competitionRepository.CreateComp(model);
+                return RedirectToAction("List");
+            }
+            return View(model);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using competitiemanager.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,5 +10,6 @@ namespace competitiemanager.Models.Interfaces
     {
         IEnumerable<Competition> AllCompetitions {get;}
         Competition GetCompById(int compId);
+        void CreateComp(NewCompViewModel model);
     }
 }
