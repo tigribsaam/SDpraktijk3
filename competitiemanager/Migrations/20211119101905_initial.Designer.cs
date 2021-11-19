@@ -10,7 +10,7 @@ using competitiemanager.Models;
 namespace competitiemanager.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20211101091138_initial")]
+    [Migration("20211119101905_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,7 +54,9 @@ namespace competitiemanager.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("CompetitionId");
 
@@ -120,7 +122,7 @@ namespace competitiemanager.Migrations
                             GoalsAway = 0,
                             GoalsHome = 0,
                             HomeTeamId = 1,
-                            StartDateAndTime = new DateTime(2021, 11, 1, 10, 11, 37, 183, DateTimeKind.Local).AddTicks(7177),
+                            StartDateAndTime = new DateTime(2021, 11, 19, 11, 19, 4, 459, DateTimeKind.Local).AddTicks(2929),
                             Status = 0
                         },
                         new
@@ -131,7 +133,7 @@ namespace competitiemanager.Migrations
                             GoalsAway = 0,
                             GoalsHome = 0,
                             HomeTeamId = 2,
-                            StartDateAndTime = new DateTime(2021, 11, 1, 10, 11, 37, 189, DateTimeKind.Local).AddTicks(4274),
+                            StartDateAndTime = new DateTime(2021, 11, 19, 11, 19, 4, 464, DateTimeKind.Local).AddTicks(3486),
                             Status = 0
                         },
                         new
@@ -142,7 +144,7 @@ namespace competitiemanager.Migrations
                             GoalsAway = 3,
                             GoalsHome = 0,
                             HomeTeamId = 2,
-                            StartDateAndTime = new DateTime(2021, 11, 1, 10, 11, 37, 189, DateTimeKind.Local).AddTicks(4369),
+                            StartDateAndTime = new DateTime(2021, 11, 19, 11, 19, 4, 464, DateTimeKind.Local).AddTicks(3562),
                             Status = 3
                         });
                 });
@@ -270,6 +272,30 @@ namespace competitiemanager.Migrations
                             TeamId = 2,
                             Location = "locatie B",
                             Name = "De Verliezers"
+                        },
+                        new
+                        {
+                            TeamId = 3,
+                            Location = "locatie C",
+                            Name = "Team C"
+                        },
+                        new
+                        {
+                            TeamId = 4,
+                            Location = "locatie D",
+                            Name = "Team D"
+                        },
+                        new
+                        {
+                            TeamId = 5,
+                            Location = "locatie E",
+                            Name = "Team E"
+                        },
+                        new
+                        {
+                            TeamId = 6,
+                            Location = "locatie F",
+                            Name = "Team F"
                         });
                 });
 

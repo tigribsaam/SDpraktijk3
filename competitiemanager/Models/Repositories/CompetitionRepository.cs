@@ -23,8 +23,7 @@ namespace competitiemanager.Models.Repositories
         {
             get
             {
-                var comps = _appDbContext.Competitions.Include(t => t.Teams).ThenInclude(t => t.Team).Include(g => g.Games);
-                return comps;
+                return _appDbContext.Competitions.Include(t => t.Teams).ThenInclude(t => t.Team).Include(g => g.Games);
             }
         }
 
@@ -32,6 +31,9 @@ namespace competitiemanager.Models.Repositories
         {
             return AllCompetitions.FirstOrDefault(c => c.CompetitionId == compId);
         }
+
+
+
 
         public void CreateComp(NewCompViewModel model)
         {
@@ -45,12 +47,12 @@ namespace competitiemanager.Models.Repositories
             _appDbContext.Competitions.Add(newComp);
             _appDbContext.SaveChanges();
 
-
+            List<int> teamsinComp = new List<int>();
             //create teams in competition
             //List<TeamInCompetition> TeamsInComp = new List<TeamInCompetition>();  --niet meer nodig--
             foreach (var teamId in model.SelectedTeam)
             {
-                _appDbContext.TeamInComps.Add(new TeamInCompetition {
+                TeamInCompetition t = new TeamInCompetition {
                     
                     TeamId = teamId,
                     CompetitionId = newComp.CompetitionId,
@@ -60,46 +62,98 @@ namespace competitiemanager.Models.Repositories
                     GamesTied = 0,
                     Goals = 0,
                     CounterGoals = 0
-                });   
+                };
+                _appDbContext.TeamInComps.Add(t);
+                _appDbContext.SaveChanges();
+                teamsinComp.Add(t.TeamInCompetitionId);
+            }
+
+
+            //rekencijfers:
+
+            List<string> teams = teamsinComp.ConvertAll(delegate (int i) { return i.ToString(); });
+            //bij oneven aantallen 'rust' toevoegen 
+            if ((teams.Count % 2) != 0)
+            {
+                teams.Add("break");
+            }
+            List<string> reversedTeams = new List<string>(teams);
+            reversedTeams.Reverse();
+
+            //eerst volgende zaterdag als startdag, tenzij vandaag zaterdag is
+            DateTime today = DateTime.Today.AddHours(12);
+            int daysUntilSaturday = (((int)DayOfWeek.Friday - (int)today.DayOfWeek + 7) % 7) + 1;
+            DateTime gameday = today.AddDays(daysUntilSaturday);
+
+            var r = new Random();
+
+            //definitie voor hele competitie: uit- en thuiswedstrijden, max wedstrijden per week als elk team max 1x per week speelt
+            int AantalWedstrijden = teams.Count * (teams.Count - 1);
+            int AantalPerWeek = (teams.Count / 2);
+            int AantalWeken = AantalWedstrijden / AantalPerWeek;
+
+            
+
+
+            // (double) round robbin 
+            //aantal weken
+            for (int i = 0; i < AantalWeken; i++)
+            {
+                //aantal wedstrijden
+                for (int k = 0; k< AantalPerWeek; k++)
+                {
+                    //geen wedstijd aanmaken als team tegen 'rust moet
+                    if(teams[k].Equals("break") || reversedTeams[k].Equals("break"))
+                    {
+                        continue;
+                    }
+
+                    Game g = new Game
+                    {
+                        CompetitionId = newComp.CompetitionId,
+                        HomeTeamId = int.Parse(teams[k]),              
+                        AwayTeamId = int.Parse(reversedTeams[k]),     
+                        StartDateAndTime = gameday.AddDays(7*i).AddHours(r.Next(0, 9)),        
+                        Status = 0
+
+                    };
+                    System.Diagnostics.Debug.WriteLine(g.StartDateAndTime);
+                    _appDbContext.Games.Add(g); 
+
+                }
+
+
+                //round robbin logica: teams in lijsten doorschuiven behalve één
+                //lijsten omwisselen op de helft van de competitie
+                if (i == (AantalWeken / 2) - 1)
+                {
+                    var templist = teams;
+                    teams = new List<string>(reversedTeams);
+                    reversedTeams = new List<string>(templist);
+                }
+                if (i >= (AantalWeken / 2) - 1)
+                {
+                    string temp = reversedTeams[1];
+                    reversedTeams.RemoveAt(1);
+                    reversedTeams.Add(temp);
+
+                    teams = new List<string>(reversedTeams);
+                    teams.Reverse();
+                }
+                else
+                {
+                    string temp = teams[1];
+                    teams.RemoveAt(1);
+                    teams.Add(temp);
+
+                    reversedTeams = new List<string>(teams);
+                    reversedTeams.Reverse();
+                }
+                
+
             }
             _appDbContext.SaveChanges();
 
-            //definitie voor hele competitie: uit- en thuiswedstrijden, max wedstrijden per week als elk team max 1x per week speelt
-            int AantalWedstrijden = model.SelectedTeam.Count * (model.SelectedTeam.Count - 1);
-            int AantalPerWeek = (model.SelectedTeam.Count / 2);
-            int AantalWeken = AantalWedstrijden / AantalPerWeek;
-
-            //rekencijfers 
-            var blabla = 0;
-
-            //create games in competition
-            foreach (var teamId in model.SelectedTeam)
-            {
-                
-
-
-
-
-
-
-
-
-
-                new Game
-                {
-                    CompetitionId = newComp.CompetitionId,
-                    HomeTeamId = 0,                  //????,
-                    AwayTeamId = 0,                  //????,
-                    StartDateAndTime = DateTime.Now,            //DateTime.Now,
-                    Status = 0
-
-                };
-            }
-
-
-
-            //_appDbContext.Competition.Add(???);
-            //_appDbContext.SaveChanges();
 
         }
     }

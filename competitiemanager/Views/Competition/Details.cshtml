@@ -10,24 +10,32 @@
     }
 
     <h3>Wedstrijden:</h3>
-    @foreach (var game in Model.Games)
-    {
-        <a asp-controller="Game" asp-action="Details" asp-route-id="@game.GameId">@game.HomeTeam.Team.Name vs. @game.AwayTeam.Team.Name</a>
-        <p>@game.StartDateAndTime.ToString("dd-MM-yyyy")</p>
-        @switch (game.Status)
+    <ol>
+        @foreach (var game in Model.Games)
         {
-            case 0:
-                <p>Nog niet gespeeld</p>
-                break;
-            case 1:
-                <p>Bezig</p>
-                <p>@game.GoalsHome - @game.GoalsAway</p>
-                break;
-            case 3:
-                <p>afgelopen</p>
-                <p>@game.GoalsHome - @game.GoalsAway</p>
-                break;
+            <li>
+                <a asp-controller="Game" asp-action="Details" asp-route-id="@game.GameId">@game.HomeTeam.Team.Name vs. @game.AwayTeam.Team.Name</a>
+                <p>@game.StartDateAndTime.ToString("dd-MM-yyyy")</p>
+                <p>@game.StartDateAndTime.ToLocalTime()</p>
+                @switch (game.Status)
+                {
+                    case 0:
+                        <p>Nog niet gespeeld</p>
+                        break;
+                    case 1:
+                        <p>Bezig</p>
+                        <p>@game.GoalsHome - @game.GoalsAway</p>
+                        break;
+                    case 3:
+                        <p>afgelopen</p>
+                        <p>@game.GoalsHome - @game.GoalsAway</p>
+                        break;
+                }
+            </li>
+
+
         }
-    }
+    </ol>
+    
 
 </div>

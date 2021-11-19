@@ -120,7 +120,7 @@ namespace competitiemanager.Migrations
                             GoalsAway = 0,
                             GoalsHome = 0,
                             HomeTeamId = 1,
-                            StartDateAndTime = new DateTime(2021, 11, 15, 14, 4, 48, 153, DateTimeKind.Local).AddTicks(8939),
+                            StartDateAndTime = new DateTime(2021, 11, 19, 11, 19, 4, 459, DateTimeKind.Local).AddTicks(2929),
                             Status = 0
                         },
                         new
@@ -131,7 +131,7 @@ namespace competitiemanager.Migrations
                             GoalsAway = 0,
                             GoalsHome = 0,
                             HomeTeamId = 2,
-                            StartDateAndTime = new DateTime(2021, 11, 15, 14, 4, 48, 157, DateTimeKind.Local).AddTicks(446),
+                            StartDateAndTime = new DateTime(2021, 11, 19, 11, 19, 4, 464, DateTimeKind.Local).AddTicks(3486),
                             Status = 0
                         },
                         new
@@ -142,7 +142,7 @@ namespace competitiemanager.Migrations
                             GoalsAway = 3,
                             GoalsHome = 0,
                             HomeTeamId = 2,
-                            StartDateAndTime = new DateTime(2021, 11, 15, 14, 4, 48, 157, DateTimeKind.Local).AddTicks(500),
+                            StartDateAndTime = new DateTime(2021, 11, 19, 11, 19, 4, 464, DateTimeKind.Local).AddTicks(3562),
                             Status = 3
                         });
                 });

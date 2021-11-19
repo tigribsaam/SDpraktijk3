@@ -13,7 +13,7 @@ namespace competitiemanager.Migrations
                 {
                     CompetitionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -180,7 +180,11 @@ namespace competitiemanager.Migrations
                 values: new object[,]
                 {
                     { 1, "locatie A", "De Winnaars" },
-                    { 2, "locatie B", "De Verliezers" }
+                    { 2, "locatie B", "De Verliezers" },
+                    { 3, "locatie C", "Team C" },
+                    { 4, "locatie D", "Team D" },
+                    { 5, "locatie E", "Team E" },
+                    { 6, "locatie F", "Team F" }
                 });
 
             migrationBuilder.InsertData(
@@ -219,17 +223,17 @@ namespace competitiemanager.Migrations
             migrationBuilder.InsertData(
                 table: "Games",
                 columns: new[] { "GameId", "AwayTeamId", "CompetitionId", "GoalsAway", "GoalsHome", "HomeTeamId", "StartDateAndTime", "Status" },
-                values: new object[] { 1, 2, 1, 0, 0, 1, new DateTime(2021, 11, 1, 10, 11, 37, 183, DateTimeKind.Local).AddTicks(7177), 0 });
+                values: new object[] { 1, 2, 1, 0, 0, 1, new DateTime(2021, 11, 19, 11, 19, 4, 459, DateTimeKind.Local).AddTicks(2929), 0 });
 
             migrationBuilder.InsertData(
                 table: "Games",
                 columns: new[] { "GameId", "AwayTeamId", "CompetitionId", "GoalsAway", "GoalsHome", "HomeTeamId", "StartDateAndTime", "Status" },
-                values: new object[] { 2, 1, 1, 0, 0, 2, new DateTime(2021, 11, 1, 10, 11, 37, 189, DateTimeKind.Local).AddTicks(4274), 0 });
+                values: new object[] { 2, 1, 1, 0, 0, 2, new DateTime(2021, 11, 19, 11, 19, 4, 464, DateTimeKind.Local).AddTicks(3486), 0 });
 
             migrationBuilder.InsertData(
                 table: "Games",
                 columns: new[] { "GameId", "AwayTeamId", "CompetitionId", "GoalsAway", "GoalsHome", "HomeTeamId", "StartDateAndTime", "Status" },
-                values: new object[] { 3, 1, 2, 3, 0, 2, new DateTime(2021, 11, 1, 10, 11, 37, 189, DateTimeKind.Local).AddTicks(4369), 3 });
+                values: new object[] { 3, 1, 2, 3, 0, 2, new DateTime(2021, 11, 19, 11, 19, 4, 464, DateTimeKind.Local).AddTicks(3562), 3 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Bets_GameId",
