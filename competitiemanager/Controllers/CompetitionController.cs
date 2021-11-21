@@ -31,6 +31,9 @@ namespace competitiemanager.Controllers
 
         public IActionResult Details(int id)
         {
+            //todo: in viewmodel stand berekenen en shit en meegeven in view (of in view berekenen)
+
+
             var comp = _competitionRepository.GetCompById(id);
             if (comp == null)
                 return NotFound();

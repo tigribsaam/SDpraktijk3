@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VUmnCh0UG5KP5OANv4tqevSUJAUAbHklpj+4aGb36RwkwUREc3BKeWmsdudsIHxqauPWgnSsSUAvUedBS6dupg==",
+  "dgSpecHash": "aWlDxr0vuxTUfolxk/AWX+foG+9kvPJWXruGw3jeaBN7FSNMQZqoY9eUf0hzHLgMR4H9SP/aYlHOL9T2nwUmJA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Birgi\\GitHub\\SDpraktijk3\\competitiemanager\\competitiemanager.csproj",
+  "projectFilePath": "C:\\Users\\Birgi\\GitHub\\SDpraktijk3\\Competitiemanager\\competitiemanager.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Birgi\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Birgi\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

@@ -34,15 +34,6 @@
 
         <span asp-validation-for="SelectedTeam" class="text-danger"></span>
 
-       @*<div class="editor-label">
-                @Html.LabelFor(model => model.SelectedTeam)
-            </div>
-            <div class="editor-field">
-                @Html.ListBoxFor(ViewBag.Teams, Model => model.SelectedTeam )
-                @Html.ValidationMessageFor(model => model.SelectedTeam)
-            </div>*@
-        
-
 
     </div>
 
@@ -53,32 +44,3 @@
     </div>
 
 </form>
-
-<script>
-
-</script>
-
-
-@*<label>
-    <input type="checkbox"
-           asp-for="Team"               (Model.SendReport== false ? "" : "checked")
-           value="@team"
-    /> @team.Name
-    </label>*@
-
-
-@*<input name="@team" type="checkbox" value="@team" />
-    <label>@team.Name</label>*@
-
-
-@*<input type="checkbox"
-    name="teams"
-    value="@team.TeamId"
-    @if(Model.Team.Any())
-    {
-        @if (Model.Team.Contains(team))
-        {
-            <text> checked </text>
-        }
-
-    } />*@

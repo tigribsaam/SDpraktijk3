@@ -1,14 +1,15 @@
 ﻿@model Game
-
-<h1>@Model.HomeTeam.Team.Name vs. @Model.AwayTeam.Team.Name</h1>
+<a asp-controller="Game" asp-action="inputScore" asp-route-id ="@Model.GameId">Score invoeren</a>
+<h1>@Model.HomeTeam.Team.Name vs. @Model.AwayTeam.Team.Name </h1>
 <h3>@Model.HomeTeam.Team.Location</h3>
 <h3>@Model.StartDateAndTime.ToString("dd-MM-yyyy")</ </h3>
+
 @switch (Model.Status)
 {
     case 0:
         <p>Nog niet gespeeld</p>
         break;
-    case 1:
+    case 2:
         <p>Bezig</p>
         <p>@Model.GoalsHome - @Model.GoalsAway</p>
         break;

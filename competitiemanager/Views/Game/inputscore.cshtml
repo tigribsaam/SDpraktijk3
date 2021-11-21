@@ -1,0 +1,38 @@
+﻿@model GameFormViewModel
+<h1>@Model.game.HomeTeam.Team.Name vs. @Model.game.AwayTeam.Team.Name </h1>
+<h3>@Model.game.HomeTeam.Team.Location</h3>
+<h3>@Model.game.StartDateAndTime.ToString("dd-MM-yyyy")</ </h3>
+
+<form asp-action="inputScore" enctype="multipart/form-data" method="post" class=" form-horizontal" role="form">
+    <h1>Score invoeren</h1>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <input asp-for="GameId" class="form-control" value="@Model.game.GameId" style="visibility:hidden " />
+
+    <div class="form-group">
+        <label asp-for="GoalsHome" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="GoalsHome" value="@Model.game.GoalsHome" class="form-control" />
+            <span asp-validation-for="GoalsHome" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GoalsAway" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="GoalsAway" value="@Model.game.GoalsAway" class="form-control" />
+            <span asp-validation-for="GoalsAway" class="text-danger"></span>
+        </div>
+    </div>
+
+    <input type="radio" asp-for="game.Status" value=2 checked="checked" />Wedstrijd is nog bezig<br />
+    <input type="radio" asp-for="game.Status" value=3 /> Wedstrijd beëindigen<br />
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+            <input asp-controller="Game" asp-action="inputScore" asp-route-id="@Model.game.GameId" type="submit" class="btn btn-primary" value="Submit" />
+        </div>
+    </div>
+
+</form>

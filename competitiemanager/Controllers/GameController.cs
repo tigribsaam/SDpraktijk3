@@ -19,6 +19,7 @@ namespace competitiemanager.Controllers
 
         public ViewResult List()
         {
+
             GameViewModel GameViewModel = new GameViewModel();
             GameViewModel.Game = _gameRepository.AllGames;
             return View(GameViewModel);
@@ -26,11 +27,31 @@ namespace competitiemanager.Controllers
 
         public ActionResult Details(int id)
         {
+            
             var Game = _gameRepository.GetGameById(id);
             if (Game == null)
                 return NotFound();
             return View(Game);
 
+        }
+
+        public ActionResult inputscore(int id)
+        {
+            GameFormViewModel model = new GameFormViewModel {game = _gameRepository.GetGameById(id)};
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult inputscore(GameFormViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                _gameRepository.updateGame(model);
+               
+                return RedirectToAction("Details", new { id = model.GameId});
+            }
+            return View(model);
         }
     }
 }

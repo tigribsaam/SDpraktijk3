@@ -92,7 +92,7 @@ namespace competitiemanager.Models.Repositories
             int AantalPerWeek = (teams.Count / 2);
             int AantalWeken = AantalWedstrijden / AantalPerWeek;
 
-            
+           
 
 
             // (double) round robbin 
