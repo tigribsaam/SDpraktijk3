@@ -3,11 +3,40 @@
 <h2>@Model.Name</h2>
 <div>
 
-    <h3>Teams:</h3>
-    @foreach (var team in Model.Teams)
-    {
-        <p>@team.Team.Name</p>
-    }
+
+
+
+    <h3>Score</h3>
+    <table>
+        <tr>
+            <th>Team</th>
+            <th>GS</th>
+            <th>W</th>
+            <th>V</th>
+            <th>G</th>
+            <th>DV-DT</th>
+            <th>DS</th>
+            <th>P</th>
+        </tr>
+        @foreach (var team in Model.Teams)
+        {
+    <tr>
+        <td>@team.Team.Name</td>
+
+        <td>@(team.GamesWon + team.GamesTied + team.GamesLost)</td>
+        <td>@team.GamesWon</td>
+        <td>@team.GamesLost</td>
+        <td>@team.GamesTied</td>
+        <td>@team.Goals - @team.CounterGoals</td>
+        <td>@(team.Goals - team.CounterGoals)</td>
+  
+          <td>@((team.GamesWon * 3) + (team.GamesTied))</td>
+  
+      </tr>
+
+        }
+    </table>
+
 
     <h3>Wedstrijden:</h3>
     <ol>

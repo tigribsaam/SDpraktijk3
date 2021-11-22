@@ -1,5 +1,10 @@
 ﻿@model Game
-<a asp-controller="Game" asp-action="inputScore" asp-route-id ="@Model.GameId">Score invoeren</a>
+
+@if (Model.Status < 3)
+{
+    <a asp-controller="Game" asp-action="inputScore" asp-route-id="@Model.GameId">Score invoeren</a>
+}
+
 <h1>@Model.HomeTeam.Team.Name vs. @Model.AwayTeam.Team.Name </h1>
 <h3>@Model.HomeTeam.Team.Location</h3>
 <h3>@Model.StartDateAndTime.ToString("dd-MM-yyyy")</ </h3>

@@ -37,6 +37,10 @@ namespace competitiemanager.Controllers
 
         public ActionResult inputscore(int id)
         {
+            if(_gameRepository.GetGameById(id).Status == 3)
+            {
+                return RedirectToAction("Details", new { id = id });
+            }
             GameFormViewModel model = new GameFormViewModel {game = _gameRepository.GetGameById(id)};
 
             return View(model);
@@ -45,12 +49,14 @@ namespace competitiemanager.Controllers
         [HttpPost]
         public ActionResult inputscore(GameFormViewModel model)
         {
-            if (ModelState.IsValid)
+            //check of de wedstrijd al is afgelopen
+            if (ModelState.IsValid && _gameRepository.GetGameById(model.GameId).Status<3)
             {
                 _gameRepository.updateGame(model);
                
                 return RedirectToAction("Details", new { id = model.GameId});
             }
+            model.game = _gameRepository.GetGameById(model.GameId);
             return View(model);
         }
     }

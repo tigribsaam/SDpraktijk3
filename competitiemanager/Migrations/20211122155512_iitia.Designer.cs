@@ -10,8 +10,8 @@ using competitiemanager.Models;
 namespace competitiemanager.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20211119101905_initial")]
-    partial class initial
+    [Migration("20211122155512_iitia")]
+    partial class iitia
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -122,7 +122,7 @@ namespace competitiemanager.Migrations
                             GoalsAway = 0,
                             GoalsHome = 0,
                             HomeTeamId = 1,
-                            StartDateAndTime = new DateTime(2021, 11, 19, 11, 19, 4, 459, DateTimeKind.Local).AddTicks(2929),
+                            StartDateAndTime = new DateTime(2021, 11, 22, 16, 55, 11, 380, DateTimeKind.Local).AddTicks(686),
                             Status = 0
                         },
                         new
@@ -133,7 +133,7 @@ namespace competitiemanager.Migrations
                             GoalsAway = 0,
                             GoalsHome = 0,
                             HomeTeamId = 2,
-                            StartDateAndTime = new DateTime(2021, 11, 19, 11, 19, 4, 464, DateTimeKind.Local).AddTicks(3486),
+                            StartDateAndTime = new DateTime(2021, 11, 22, 16, 55, 11, 387, DateTimeKind.Local).AddTicks(3889),
                             Status = 0
                         },
                         new
@@ -144,7 +144,7 @@ namespace competitiemanager.Migrations
                             GoalsAway = 3,
                             GoalsHome = 0,
                             HomeTeamId = 2,
-                            StartDateAndTime = new DateTime(2021, 11, 19, 11, 19, 4, 464, DateTimeKind.Local).AddTicks(3562),
+                            StartDateAndTime = new DateTime(2021, 11, 22, 16, 55, 11, 387, DateTimeKind.Local).AddTicks(4014),
                             Status = 3
                         });
                 });
