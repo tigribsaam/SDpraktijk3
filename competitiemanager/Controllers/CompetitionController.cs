@@ -37,6 +37,7 @@ namespace competitiemanager.Controllers
             var comp = _competitionRepository.GetCompById(id);
             if (comp == null)
                 return NotFound();
+            comp.Teams.Sort((a, b) => b.Points.CompareTo(a.Points));
             return View(comp);
 
         }

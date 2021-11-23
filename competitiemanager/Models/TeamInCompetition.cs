@@ -19,6 +19,8 @@ namespace competitiemanager.Models
         public int GamesTied { get; set; }
         public int Goals { get; set; }
         public int CounterGoals { get; set; }
+        public int Points { get; set; }
+        public int DoelSaldo { get; set; }
 
     }
 }

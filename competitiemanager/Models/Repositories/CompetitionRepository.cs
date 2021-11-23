@@ -61,7 +61,9 @@ namespace competitiemanager.Models.Repositories
                     GamesLost = 0,
                     GamesTied = 0,
                     Goals = 0,
-                    CounterGoals = 0
+                    CounterGoals = 0,
+                    Points = 0,
+                    DoelSaldo = 0
                 };
                 _appDbContext.TeamInComps.Add(t);
                 _appDbContext.SaveChanges();

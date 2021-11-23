@@ -59,21 +59,27 @@ namespace competitiemanager.Models.Repositories
                 HomeTeam.CounterGoals = HomeTeam.CounterGoals + model.GoalsAway;
                 AwayTeam.Goals = AwayTeam.Goals + model.GoalsAway;
                 AwayTeam.CounterGoals = AwayTeam.CounterGoals + model.GoalsHome;
+                HomeTeam.DoelSaldo = HomeTeam.Goals - HomeTeam.CounterGoals;
+                AwayTeam.DoelSaldo = AwayTeam.Goals - AwayTeam.CounterGoals;
 
                 //uitslag
                 if (theGame.GoalsHome == theGame.GoalsAway)
                 {
                     HomeTeam.GamesTied += 1; // HomeTeam.GamesTied++;
                     AwayTeam.GamesTied += 1; // AwayTeam.GamesTied++;
+                    HomeTeam.Points += 1;
+                    AwayTeam.Points += 1;
                 }
                 if (theGame.GoalsHome > theGame.GoalsAway)
                 {
-                    HomeTeam.GamesWon += 1; // HomeTeam.GamesWon++;
+                    HomeTeam.GamesWon += 1;
+                    HomeTeam.Points += 3;// HomeTeam.GamesWon++;
                     AwayTeam.GamesLost += 1; //= AwayTeam.GamesLost++;
                 }
                 else
                 {
-                    AwayTeam.GamesWon += 1; //= AwayTeam.GamesWon++;
+                    AwayTeam.GamesWon += 1;
+                    AwayTeam.Points += 3;//= AwayTeam.GamesWon++;
                     HomeTeam.GamesLost += 1; //= HomeTeam.GamesLost++;
                 }
 

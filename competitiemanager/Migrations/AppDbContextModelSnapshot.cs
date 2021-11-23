@@ -120,7 +120,7 @@ namespace competitiemanager.Migrations
                             GoalsAway = 0,
                             GoalsHome = 0,
                             HomeTeamId = 1,
-                            StartDateAndTime = new DateTime(2021, 11, 22, 16, 55, 11, 380, DateTimeKind.Local).AddTicks(686),
+                            StartDateAndTime = new DateTime(2021, 11, 23, 16, 46, 59, 317, DateTimeKind.Local).AddTicks(1437),
                             Status = 0
                         },
                         new
@@ -131,7 +131,7 @@ namespace competitiemanager.Migrations
                             GoalsAway = 0,
                             GoalsHome = 0,
                             HomeTeamId = 2,
-                            StartDateAndTime = new DateTime(2021, 11, 22, 16, 55, 11, 387, DateTimeKind.Local).AddTicks(3889),
+                            StartDateAndTime = new DateTime(2021, 11, 23, 16, 46, 59, 320, DateTimeKind.Local).AddTicks(3600),
                             Status = 0
                         },
                         new
@@ -142,7 +142,7 @@ namespace competitiemanager.Migrations
                             GoalsAway = 3,
                             GoalsHome = 0,
                             HomeTeamId = 2,
-                            StartDateAndTime = new DateTime(2021, 11, 22, 16, 55, 11, 387, DateTimeKind.Local).AddTicks(4014),
+                            StartDateAndTime = new DateTime(2021, 11, 23, 16, 46, 59, 320, DateTimeKind.Local).AddTicks(3651),
                             Status = 3
                         });
                 });
@@ -310,6 +310,9 @@ namespace competitiemanager.Migrations
                     b.Property<int>("CounterGoals")
                         .HasColumnType("int");
 
+                    b.Property<int>("DoelSaldo")
+                        .HasColumnType("int");
+
                     b.Property<int>("GamesLost")
                         .HasColumnType("int");
 
@@ -323,6 +326,9 @@ namespace competitiemanager.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("Goals")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Points")
                         .HasColumnType("int");
 
                     b.Property<int>("TeamId")
@@ -342,11 +348,13 @@ namespace competitiemanager.Migrations
                             TeamInCompetitionId = 1,
                             CompetitionId = 1,
                             CounterGoals = 0,
+                            DoelSaldo = 0,
                             GamesLost = 0,
                             GamesPlayed = 0,
                             GamesTied = 0,
                             GamesWon = 0,
                             Goals = 0,
+                            Points = 0,
                             TeamId = 1
                         },
                         new
@@ -354,11 +362,13 @@ namespace competitiemanager.Migrations
                             TeamInCompetitionId = 2,
                             CompetitionId = 1,
                             CounterGoals = 0,
+                            DoelSaldo = 0,
                             GamesLost = 0,
                             GamesPlayed = 0,
                             GamesTied = 0,
                             GamesWon = 0,
                             Goals = 0,
+                            Points = 0,
                             TeamId = 2
                         });
                 });
