@@ -10,6 +10,7 @@ namespace competitiemanager.Models
     {
         [Key]
         public int UserId { get; set; }
+        public string IdentityId { get; set; }
         public String Name { get; set; }
         //????????? role?????
         public String Role { get; set; }

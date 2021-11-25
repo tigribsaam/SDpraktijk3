@@ -11,6 +11,8 @@ namespace competitiemanager.Models
         [Key]
         public int BetId { get; set; }
         public int GameId { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; }
         public Game Game { get; set; }
         public String Prediction { get; set; }
     }

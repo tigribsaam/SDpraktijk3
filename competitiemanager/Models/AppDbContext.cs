@@ -112,14 +112,14 @@ namespace competitiemanager.Models
                 );
 
 
-            modelBuilder.Entity<User>().HasData(
-                new User
-                {
-                    UserId = 1,
-                    Name = "Ad Random",
-                    TotoScore = 0,
-                    Bets = null
-                });
+            //modelBuilder.Entity<User>().HasData(
+            //    new User
+            //    {
+            //        UserId = 1,
+            //        Name = "Ad Random",
+            //        TotoScore = 0,
+            //        Bets = null
+            //    });
 
             modelBuilder.Entity<Competition>().HasData(
                 new Competition

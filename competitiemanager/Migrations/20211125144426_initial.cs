@@ -40,6 +40,7 @@ namespace competitiemanager.Migrations
                 {
                     UserId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    IdentityId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Role = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TotoScore = table.Column<int>(type: "int", nullable: false)
@@ -147,8 +148,8 @@ namespace competitiemanager.Migrations
                     BetId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     GameId = table.Column<int>(type: "int", nullable: false),
-                    Prediction = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<int>(type: "int", nullable: true)
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    Prediction = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -164,7 +165,7 @@ namespace competitiemanager.Migrations
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -188,11 +189,6 @@ namespace competitiemanager.Migrations
                     { 5, "locatie E", "Team E" },
                     { 6, "locatie F", "Team F" }
                 });
-
-            migrationBuilder.InsertData(
-                table: "Users",
-                columns: new[] { "UserId", "Name", "Role", "TotoScore" },
-                values: new object[] { 1, "Ad Random", null, 0 });
 
             migrationBuilder.InsertData(
                 table: "Players",
@@ -225,17 +221,17 @@ namespace competitiemanager.Migrations
             migrationBuilder.InsertData(
                 table: "Games",
                 columns: new[] { "GameId", "AwayTeamId", "CompetitionId", "GoalsAway", "GoalsHome", "HomeTeamId", "StartDateAndTime", "Status" },
-                values: new object[] { 1, 2, 1, 0, 0, 1, new DateTime(2021, 11, 23, 16, 46, 59, 317, DateTimeKind.Local).AddTicks(1437), 0 });
+                values: new object[] { 1, 2, 1, 0, 0, 1, new DateTime(2021, 11, 25, 15, 44, 26, 68, DateTimeKind.Local).AddTicks(1012), 0 });
 
             migrationBuilder.InsertData(
                 table: "Games",
                 columns: new[] { "GameId", "AwayTeamId", "CompetitionId", "GoalsAway", "GoalsHome", "HomeTeamId", "StartDateAndTime", "Status" },
-                values: new object[] { 2, 1, 1, 0, 0, 2, new DateTime(2021, 11, 23, 16, 46, 59, 320, DateTimeKind.Local).AddTicks(3600), 0 });
+                values: new object[] { 2, 1, 1, 0, 0, 2, new DateTime(2021, 11, 25, 15, 44, 26, 71, DateTimeKind.Local).AddTicks(2066), 0 });
 
             migrationBuilder.InsertData(
                 table: "Games",
                 columns: new[] { "GameId", "AwayTeamId", "CompetitionId", "GoalsAway", "GoalsHome", "HomeTeamId", "StartDateAndTime", "Status" },
-                values: new object[] { 3, 1, 2, 3, 0, 2, new DateTime(2021, 11, 23, 16, 46, 59, 320, DateTimeKind.Local).AddTicks(3651), 3 });
+                values: new object[] { 3, 1, 2, 3, 0, 2, new DateTime(2021, 11, 25, 15, 44, 26, 71, DateTimeKind.Local).AddTicks(2118), 3 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Bets_GameId",

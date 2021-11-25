@@ -10,7 +10,7 @@ using competitiemanager.Models;
 namespace competitiemanager.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20211123154659_initial")]
+    [Migration("20211125144426_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,7 +34,7 @@ namespace competitiemanager.Migrations
                     b.Property<string>("Prediction")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("BetId");
@@ -122,7 +122,7 @@ namespace competitiemanager.Migrations
                             GoalsAway = 0,
                             GoalsHome = 0,
                             HomeTeamId = 1,
-                            StartDateAndTime = new DateTime(2021, 11, 23, 16, 46, 59, 317, DateTimeKind.Local).AddTicks(1437),
+                            StartDateAndTime = new DateTime(2021, 11, 25, 15, 44, 26, 68, DateTimeKind.Local).AddTicks(1012),
                             Status = 0
                         },
                         new
@@ -133,7 +133,7 @@ namespace competitiemanager.Migrations
                             GoalsAway = 0,
                             GoalsHome = 0,
                             HomeTeamId = 2,
-                            StartDateAndTime = new DateTime(2021, 11, 23, 16, 46, 59, 320, DateTimeKind.Local).AddTicks(3600),
+                            StartDateAndTime = new DateTime(2021, 11, 25, 15, 44, 26, 71, DateTimeKind.Local).AddTicks(2066),
                             Status = 0
                         },
                         new
@@ -144,7 +144,7 @@ namespace competitiemanager.Migrations
                             GoalsAway = 3,
                             GoalsHome = 0,
                             HomeTeamId = 2,
-                            StartDateAndTime = new DateTime(2021, 11, 23, 16, 46, 59, 320, DateTimeKind.Local).AddTicks(3651),
+                            StartDateAndTime = new DateTime(2021, 11, 25, 15, 44, 26, 71, DateTimeKind.Local).AddTicks(2118),
                             Status = 3
                         });
                 });
@@ -382,6 +382,9 @@ namespace competitiemanager.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("IdentityId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -394,14 +397,6 @@ namespace competitiemanager.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = 1,
-                            Name = "Ad Random",
-                            TotoScore = 0
-                        });
                 });
 
             modelBuilder.Entity("competitiemanager.Models.Bet", b =>
@@ -412,11 +407,15 @@ namespace competitiemanager.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("competitiemanager.Models.User", null)
+                    b.HasOne("competitiemanager.Models.User", "User")
                         .WithMany("Bets")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Game");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("competitiemanager.Models.Game", b =>

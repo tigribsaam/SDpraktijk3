@@ -62,6 +62,9 @@ namespace competitiemanager.Models.Repositories
                 HomeTeam.DoelSaldo = HomeTeam.Goals - HomeTeam.CounterGoals;
                 AwayTeam.DoelSaldo = AwayTeam.Goals - AwayTeam.CounterGoals;
 
+                HomeTeam.GamesPlayed += 1; 
+                AwayTeam.GamesPlayed += 1;
+
                 //uitslag
                 if (theGame.GoalsHome == theGame.GoalsAway)
                 {
