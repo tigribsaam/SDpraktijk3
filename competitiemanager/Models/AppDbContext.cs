@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
 using System.Collections.Generic;
@@ -7,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace competitiemanager.Models
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -19,7 +21,7 @@ namespace competitiemanager.Models
         public DbSet<Game> Games { get; set; }
         public DbSet<TeamInCompetition> TeamInComps { get; set; }
         public DbSet<Competition> Competitions { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<User> UsersToto { get; set; }
         public DbSet<Player> Players { get; set; }
 
 
