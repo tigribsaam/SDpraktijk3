@@ -18,10 +18,12 @@
             <li><a asp-controller="Game" asp-action="List">Game</a></li>
             <li><a asp-controller="TeamInComp" asp-action="List">TeamInComp</a></li>
             <li><a asp-controller="User" asp-action="Index">User</a></li>
+            <partial name="_LoginPartial"/>
         </ul>
     </nav>
     <div>
         @RenderBody()
     </div>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

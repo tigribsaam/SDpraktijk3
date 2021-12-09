@@ -13,6 +13,7 @@ using competitiemanager.Models.Repositories;
 using competitiemanager.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Identity;
 
 namespace competitiemanager
 {
@@ -32,6 +33,7 @@ namespace competitiemanager
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AppDbContext>();
 
             services.AddScoped<IBetRepository, BetRepository>();
             services.AddScoped<ICompetitionRepository, CompetitionRepository>();
@@ -42,6 +44,9 @@ namespace competitiemanager
 
 
             services.AddControllersWithViews();
+            //userid?
+            services.AddHttpContextAccessor();
+            services.AddRazorPages();
 
 
         }
@@ -58,12 +63,15 @@ namespace competitiemanager
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }
