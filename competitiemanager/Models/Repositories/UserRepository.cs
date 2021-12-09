@@ -1,4 +1,5 @@
 ﻿using competitiemanager.Models.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,17 +17,16 @@ namespace competitiemanager.Models.Repositories
             _appDbConext = appDbContext;
         }
 
-        public IEnumerable<User> AllUsers =>
-            new List<User>
+        public IEnumerable<User> AllUsers
+        {
+            get
             {
-                new User {
-                    UserId = 1,
-                    Name = "Ad Random",
-                    TotoScore = 0,
-                    Bets = new List<Bet>{}}
-            };
+                return _appDbConext.UsersToto.Include(b => b.Bets);
+            }
+        }
 
-        public User GetUserById(int userId)
+
+    public User GetUserById(int userId)
         {
             return AllUsers.FirstOrDefault(u => u.UserId == userId);
         }
