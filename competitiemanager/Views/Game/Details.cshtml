@@ -1,25 +1,30 @@
-﻿@model Game
+﻿@model GameViewModel
 
-@if (Model.Status < 3)
+@if (Model.game.Status < 3)
 {
-    <a asp-controller="Game" asp-action="inputScore" asp-route-id="@Model.GameId">Score invoeren</a>
+    <a asp-controller="Game" asp-action="inputScore" asp-route-id="@Model.game.GameId">Score invoeren</a>
 }
 
-<h1>@Model.HomeTeam.Team.Name vs. @Model.AwayTeam.Team.Name </h1>
-<h3>@Model.HomeTeam.Team.Location</h3>
-<h3>@Model.StartDateAndTime.ToString("dd-MM-yyyy")</ </h3>
+@if (Model.game.Status < 2 )
+{
+    <a asp-controller="Bet" asp-action="PlaceBet" asp-route-id="@Model.game.GameId">Weddenschap plaatsen</a>
+}
 
-@switch (Model.Status)
+<h1>@Model.game.HomeTeam.Team.Name vs. @Model.game.AwayTeam.Team.Name </h1>
+<h3>@Model.game.HomeTeam.Team.Location</h3>
+<h3>@Model.game.StartDateAndTime.ToString("dd-MM-yyyy")</ </h3>
+
+@switch (Model.game.Status)
 {
     case 0:
         <p>Nog niet gespeeld</p>
         break;
     case 2:
         <p>Bezig</p>
-        <p>@Model.GoalsHome - @Model.GoalsAway</p>
+        <p>@Model.game.GoalsHome - @Model.game.GoalsAway</p>
         break;
     case 3:
         <p>afgelopen</p>
-        <p>@Model.GoalsHome - @Model.GoalsAway</p>
+        <p>@Model.game.GoalsHome - @Model.game.GoalsAway</p>
         break;
 }

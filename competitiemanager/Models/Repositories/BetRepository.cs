@@ -1,5 +1,7 @@
 ﻿
 using competitiemanager.Models.Interfaces;
+using competitiemanager.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +11,40 @@ namespace competitiemanager.Models.Repositories
 {
     public class BetRepository : IBetRepository
     {
-        private readonly AppDbContext _appDbConext;
+        private readonly AppDbContext _appDbContext;
 
         public BetRepository(AppDbContext appDbContext)
         {
-            _appDbConext = appDbContext;
+            _appDbContext = appDbContext;
         }
-        
+
+        public IEnumerable<Bet> AllBets
+        {
+            get
+            {
+                return _appDbContext.Bets.Include(u => u.User).Include(g => g.Game);
+            }          
+        }
+
         public Bet GetBetById(int BetId)
         {
-            throw new NotImplementedException();
+            return AllBets.FirstOrDefault(b => b.BetId == BetId);
+        }
+
+        public void PlaceBet(BetFormViewModel model)
+        {
+            Bet newBet = new Bet
+            {
+                GameId = model.GameId,
+                UserId = model.User.UserId,
+                Game = model.game,
+                User = model.User,
+                //1/1 = thuis 2/2 = uit 3/x = gelijk
+                Prediction = model.Prediction
+            };
+            _appDbContext.Bets.Add(newBet);
+            _appDbContext.SaveChanges();
+    
         }
     }
 }

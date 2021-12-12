@@ -49,7 +49,7 @@ namespace competitiemanager.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            //[Required]
+            [Required]
             //[EmailAddress]
             [Display(Name = "Username")]
             public string Email { get; set; }

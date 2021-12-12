@@ -26,9 +26,16 @@ namespace competitiemanager.Models.Repositories
         }
 
 
-    public User GetUserById(int userId)
+        public User GetUserById(int userId)
         {
             return AllUsers.FirstOrDefault(u => u.UserId == userId);
         }
+
+
+        public User GetUserById(string userId)
+        {
+            return AllUsers.FirstOrDefault(u => u.IdentityId == userId);
+        }
+
     }
 }

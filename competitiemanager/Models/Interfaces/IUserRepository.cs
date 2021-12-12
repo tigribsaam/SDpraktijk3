@@ -9,5 +9,6 @@ namespace competitiemanager.Models.Interfaces
     {
         IEnumerable<User> AllUsers { get; }
         User GetUserById(int userId);
+        User GetUserById(string userId);
     }
 }

@@ -11,7 +11,7 @@ namespace competitiemanager.ViewModels
     {
         public Game game { get; set; }
         public int GameId { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public User User { get; set; }
         //1/1 = thuis 2/2 = uit 3/x = gelijk
         [Required(ErrorMessage = "Voer de voorspelling in")]
