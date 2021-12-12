@@ -123,86 +123,86 @@ namespace competitiemanager.Models
             //        Bets = null
             //    });
 
-            modelBuilder.Entity<Competition>().HasData(
-                new Competition
-                {
-                    CompetitionId = 1,
-                    Name = "test competitie 1",
-                    Teams = new List<TeamInCompetition>(),
-                    Games = new List<Game>()
-                },
-                new Competition
-                {
-                    CompetitionId = 2,
-                    Name = "test competitie 2",
-                    Teams = new List<TeamInCompetition>(),
-                    Games = new List<Game>()
-                });
+            //modelBuilder.Entity<Competition>().HasData(
+            //    new Competition
+            //    {
+            //        CompetitionId = 1,
+            //        Name = "test competitie 1",
+            //        Teams = new List<TeamInCompetition>(),
+            //        Games = new List<Game>()
+            //    },
+            //    new Competition
+            //    {
+            //        CompetitionId = 2,
+            //        Name = "test competitie 2",
+            //        Teams = new List<TeamInCompetition>(),
+            //        Games = new List<Game>()
+            //    });
 
-            modelBuilder.Entity<TeamInCompetition>().HasData(
-                new TeamInCompetition
-                {
-                    TeamInCompetitionId = 1,
-                    TeamId = 1,
-                    CompetitionId = 1,
-                    GamesPlayed = 0,
-                    GamesWon = 0,
-                    GamesLost = 0,
-                    GamesTied = 0,
-                    Goals = 0,
-                    CounterGoals = 0,
-                    Points = 0,
-                    DoelSaldo = 0
-                },
-                new TeamInCompetition
-                {
-                    TeamInCompetitionId = 2,
-                    TeamId = 2,
-                    CompetitionId = 1,
-                    GamesPlayed = 0,
-                    GamesWon = 0,
-                    GamesLost = 0,
-                    GamesTied = 0,
-                    Goals = 0,
-                    CounterGoals = 0,
-                    Points = 0,
-                    DoelSaldo = 0
-                }
-                );
+            //modelBuilder.Entity<TeamInCompetition>().HasData(
+            //    new TeamInCompetition
+            //    {
+            //        TeamInCompetitionId = 1,
+            //        TeamId = 1,
+            //        CompetitionId = 1,
+            //        GamesPlayed = 0,
+            //        GamesWon = 0,
+            //        GamesLost = 0,
+            //        GamesTied = 0,
+            //        Goals = 0,
+            //        CounterGoals = 0,
+            //        Points = 0,
+            //        DoelSaldo = 0
+            //    },
+            //    new TeamInCompetition
+            //    {
+            //        TeamInCompetitionId = 2,
+            //        TeamId = 2,
+            //        CompetitionId = 1,
+            //        GamesPlayed = 0,
+            //        GamesWon = 0,
+            //        GamesLost = 0,
+            //        GamesTied = 0,
+            //        Goals = 0,
+            //        CounterGoals = 0,
+            //        Points = 0,
+            //        DoelSaldo = 0
+            //    }
+            //    );
 
-            modelBuilder.Entity<Game>().HasData(
-                new Game
-                {
-                    GameId = 1,
-                    CompetitionId = 1,
-                    HomeTeamId = 1,
-                    AwayTeamId = 2,
-                    StartDateAndTime = DateTime.Now,
-                    Status = 0
+            //modelBuilder.Entity<Game>().HasData(
+            //    new Game
+            //    {
+            //        GameId = 1,
+            //        CompetitionId = 1,
+            //        HomeTeamId = 1,
+            //        AwayTeamId = 2,
+            //        StartDateAndTime = DateTime.Now,
+            //        Status = 0
 
-                },
-                new Game
-                {
-                    GameId = 2,
-                    CompetitionId = 1,
-                    HomeTeamId = 2,
-                    AwayTeamId = 1,
-                    StartDateAndTime = DateTime.Now,
-                    Status = 0
+            //    },
+            //    new Game
+            //    {
+            //        GameId = 2,
+            //        CompetitionId = 1,
+            //        HomeTeamId = 2,
+            //        AwayTeamId = 1,
+            //        StartDateAndTime = DateTime.Now,
+            //        Status = 0
 
-                },
-                new Game
-                {
-                    GameId = 3,
-                    CompetitionId = 2,
-                    HomeTeamId = 2,
-                    AwayTeamId = 1,
-                    StartDateAndTime = DateTime.Now,
-                    Status = 3,
-                    GoalsHome = 0,
-                    GoalsAway = 3
+            //    },
+            //    new Game
+            //    {
+            //        GameId = 3,
+            //        CompetitionId = 2,
+            //        HomeTeamId = 2,
+            //        AwayTeamId = 1,
+            //        StartDateAndTime = DateTime.Now,
+            //        Status = 3,
+            //        GoalsHome = 0,
+            //        GoalsAway = 3
 
-                });
+            //    });
 
         }
     }

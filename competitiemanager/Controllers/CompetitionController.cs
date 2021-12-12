@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using competitiemanager.Models.Interfaces;
 using competitiemanager.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace competitiemanager.Controllers
@@ -42,6 +43,7 @@ namespace competitiemanager.Controllers
 
         }
 
+        [Authorize]
         public IActionResult NewComp()
         {
             var model = new NewCompViewModel { };
