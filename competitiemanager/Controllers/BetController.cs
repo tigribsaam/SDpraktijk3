@@ -48,7 +48,7 @@ namespace competitiemanager.Controllers
 
             if (ModelState.IsValid && _gameRepository.GetGameById(model.GameId).Status < 3)
             {
-                _gameRepository.updateGame(model);
+                //_gameRepository.updateGame(model);
 
                 return RedirectToAction("Details", new { id = model.GameId });
             }

@@ -15,7 +15,7 @@ namespace competitiemanager.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.7")
+                .HasAnnotation("ProductVersion", "3.1.21")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -162,10 +162,12 @@ namespace competitiemanager.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -202,10 +204,12 @@ namespace competitiemanager.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -225,8 +229,8 @@ namespace competitiemanager.Migrations
                     b.Property<int>("GameId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Prediction")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Prediction")
+                        .HasColumnType("int");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -255,18 +259,6 @@ namespace competitiemanager.Migrations
                     b.HasKey("CompetitionId");
 
                     b.ToTable("Competitions");
-
-                    b.HasData(
-                        new
-                        {
-                            CompetitionId = 1,
-                            Name = "test competitie 1"
-                        },
-                        new
-                        {
-                            CompetitionId = 2,
-                            Name = "test competitie 2"
-                        });
                 });
 
             modelBuilder.Entity("competitiemanager.Models.Game", b =>
@@ -306,41 +298,6 @@ namespace competitiemanager.Migrations
                     b.HasIndex("HomeTeamId");
 
                     b.ToTable("Games");
-
-                    b.HasData(
-                        new
-                        {
-                            GameId = 1,
-                            AwayTeamId = 2,
-                            CompetitionId = 1,
-                            GoalsAway = 0,
-                            GoalsHome = 0,
-                            HomeTeamId = 1,
-                            StartDateAndTime = new DateTime(2021, 12, 7, 13, 45, 15, 425, DateTimeKind.Local).AddTicks(5787),
-                            Status = 0
-                        },
-                        new
-                        {
-                            GameId = 2,
-                            AwayTeamId = 1,
-                            CompetitionId = 1,
-                            GoalsAway = 0,
-                            GoalsHome = 0,
-                            HomeTeamId = 2,
-                            StartDateAndTime = new DateTime(2021, 12, 7, 13, 45, 15, 431, DateTimeKind.Local).AddTicks(8413),
-                            Status = 0
-                        },
-                        new
-                        {
-                            GameId = 3,
-                            AwayTeamId = 1,
-                            CompetitionId = 2,
-                            GoalsAway = 3,
-                            GoalsHome = 0,
-                            HomeTeamId = 2,
-                            StartDateAndTime = new DateTime(2021, 12, 7, 13, 45, 15, 431, DateTimeKind.Local).AddTicks(8580),
-                            Status = 3
-                        });
                 });
 
             modelBuilder.Entity("competitiemanager.Models.Player", b =>
@@ -537,36 +494,6 @@ namespace competitiemanager.Migrations
                     b.HasIndex("TeamId");
 
                     b.ToTable("TeamInComps");
-
-                    b.HasData(
-                        new
-                        {
-                            TeamInCompetitionId = 1,
-                            CompetitionId = 1,
-                            CounterGoals = 0,
-                            DoelSaldo = 0,
-                            GamesLost = 0,
-                            GamesPlayed = 0,
-                            GamesTied = 0,
-                            GamesWon = 0,
-                            Goals = 0,
-                            Points = 0,
-                            TeamId = 1
-                        },
-                        new
-                        {
-                            TeamInCompetitionId = 2,
-                            CompetitionId = 1,
-                            CounterGoals = 0,
-                            DoelSaldo = 0,
-                            GamesLost = 0,
-                            GamesPlayed = 0,
-                            GamesTied = 0,
-                            GamesWon = 0,
-                            Goals = 0,
-                            Points = 0,
-                            TeamId = 2
-                        });
                 });
 
             modelBuilder.Entity("competitiemanager.Models.User", b =>
