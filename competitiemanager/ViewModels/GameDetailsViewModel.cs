@@ -11,6 +11,7 @@ namespace competitiemanager.ViewModels
         public Game game { get; set; }
         public IEnumerable<Bet> bets { get; set; } = new List<Bet>();
         public String currentUser { get; set; } = "";
+        public Bet placedBet { get; set; }
 
     }
 }

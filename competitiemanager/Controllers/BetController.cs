@@ -43,8 +43,11 @@ namespace competitiemanager.Controllers
         {
 
             var game = _gameRepository.GetGameById(id);
+            var betsPlaced = _betRepository.AllBets.Where(g => g.GameId == id);
+            var UserPlacedBet = betsPlaced.Where(u => u.User.IdentityId == _userId);
 
-            if (game.Status >= 2 || game.StartDateAndTime < DateTime.Now)
+            //geen weddenschap plaatsen als: de wedstrijdbegonnen is (status of starttijd) of al een weddenschap heeft geplaatst
+            if (game.Status >= 2 || game.StartDateAndTime < DateTime.Now || UserPlacedBet.Count() != 0)
             {
                 return RedirectToAction("Details", "Game", new { id = id });
             }
@@ -60,15 +63,16 @@ namespace competitiemanager.Controllers
             model.game = _gameRepository.GetGameById(model.GameId);
             model.User = _userRepository.GetUserById(_userId);
 
-            if (ModelState.IsValid && model.game.Status < 2)
-            {
+            var betsPlaced = _betRepository.AllBets.Where(g => g.GameId == model.GameId);
+            var UserPlacedBet = betsPlaced.Where(u => u.User.IdentityId == _userId);
 
+            if (ModelState.IsValid && model.game.Status < 2 && UserPlacedBet.Count() == 0)
+            {
                 _betRepository.PlaceBet(model);
                 return RedirectToAction("Details", "Game", new { id = model.GameId });
             }
             model.game = _gameRepository.GetGameById(model.GameId);
             return View(model);
-
         }
     }
 }

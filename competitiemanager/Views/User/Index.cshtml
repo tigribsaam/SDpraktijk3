@@ -8,13 +8,14 @@
     @*<a asp-controller="Team" asp-action="Details" asp-route-id="@team.TeamId">@team.Name</a>*@
     <p>@team.Name</p>
     <p>@team.IdentityId</p>
-    <p>Bets:</p>
+    <p>@team.TotoScore</p>
+    @*<p>Bets:</p>
     <ol>
         @foreach (var playa in team.Bets)
         {
             <li>@playa.Game.HomeTeam.Team.Name</li>
         }
-    </ol>
+    </ol>*@
     <br />
 </div>
 }

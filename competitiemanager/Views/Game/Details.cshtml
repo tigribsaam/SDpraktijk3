@@ -5,7 +5,7 @@
     <a asp-controller="Game" asp-action="inputScore" asp-route-id="@Model.game.GameId">Score invoeren</a>
 }
 
-@if (Model.game.Status < 2 )
+@if (Model.game.Status < 2 && Model.placedBet == null)
 {
     <a asp-controller="Bet" asp-action="PlaceBet" asp-route-id="@Model.game.GameId">Weddenschap plaatsen</a>
 }
@@ -29,8 +29,21 @@
         break;
 }
 
-<h2>weddenschappen:</h2>
-@foreach(var bet in Model.bets)
+<h2>Weddenschap geplaatst:</h2>
+@if (Model.placedBet != null)
 {
-    <p>@bet.UserId</p>
+    <p>Voorspelling:</p>
+    @switch (Model.placedBet.Prediction)
+    {
+        case 1:
+            <p>thuis wint</p>
+            break;
+        case 2:
+            <p>uit wint</p>
+            break;
+        case 3:
+            <p>gelijkspel</p>
+            break;
+    }
+
 }

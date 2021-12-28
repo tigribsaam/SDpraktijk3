@@ -12,11 +12,15 @@ namespace competitiemanager.Models.Repositories
     {
         private readonly AppDbContext _appDbContext;
         private readonly ITeamInCompRepository _teamInCompRepository;
+        private readonly IBetRepository _betRepository;
+        private readonly IUserRepository _userRepository;
 
-        public GameRepository(AppDbContext appDbContext, ITeamInCompRepository teamInCompetition)
+        public GameRepository(AppDbContext appDbContext, ITeamInCompRepository teamInCompetition, IBetRepository betRepository, IUserRepository userRepository)
         {
             _appDbContext = appDbContext;
             _teamInCompRepository = teamInCompetition;
+            _betRepository = betRepository;
+            _userRepository = userRepository;
         }
 
         public IEnumerable<Game> AllGames
@@ -34,10 +38,6 @@ namespace competitiemanager.Models.Repositories
 
         public void updateGame(GameFormViewModel model)
         {
-            //TODO:
-            //- bets object update
-            //- User object update??
-
             Game theGame = GetGameById(model.GameId);
 
             theGame.GoalsHome = model.GoalsHome;
@@ -48,7 +48,30 @@ namespace competitiemanager.Models.Repositories
             if(model.game.Status == 3)
             {
                 //bets
+                //alle bets van deze game
+                IEnumerable<Bet> placedBets = _betRepository.AllBets.Where(g => g.GameId == theGame.GameId);
+
+                //alle bets met goede voorspelling fliteren
+                if (theGame.GoalsHome == theGame.GoalsAway) //gelijk
+                {
+                    placedBets = placedBets.Where(p => p.Prediction == 3);
+                }
+                if (theGame.GoalsHome > theGame.GoalsAway) //thuis
+                {
+                    placedBets = placedBets.Where(p => p.Prediction == 1);
+                }
+                else
+                {
+                    placedBets = placedBets.Where(p => p.Prediction == 2);
+                }
+
                 //users
+                //users van gefilterde bets krijgen punten
+                foreach (var bet in placedBets)
+                {
+                    var user = _userRepository.GetUserById(bet.UserId);
+                    user.TotoScore += 5;
+                }
 
                 //teamsincomp
                 TeamInCompetition HomeTeam = _teamInCompRepository.GetTeamInCompById(theGame.HomeTeamId);
@@ -86,21 +109,11 @@ namespace competitiemanager.Models.Repositories
                     HomeTeam.GamesLost += 1; //= HomeTeam.GamesLost++;
                 }
 
-
-
-
-
-
             }
             else
             {
                 //als de wedstrijd nog bezig is
             }
-
-
-
-
-
 
             _appDbContext.SaveChanges();
 

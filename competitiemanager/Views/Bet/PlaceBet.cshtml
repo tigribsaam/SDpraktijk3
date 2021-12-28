@@ -14,6 +14,7 @@
         <input asp-for="GameId" class="form-control" value="@Model.game.GameId" style="visibility:hidden " />
         <br />
 
+        @*1/1 = thuis 2/2 = uit 3/x = gelijk*@
         <input type="radio" asp-for="Prediction" value=1 checked="checked" />Thuis wint: @Model.game.HomeTeam.Team.Name<br />
         <input type="radio" asp-for="Prediction" value=3 />Gelijkspel<br />
         <input type="radio" asp-for="Prediction" value=2 />Uit wint: @Model.game.AwayTeam.Team.Name<br />

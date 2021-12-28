@@ -43,6 +43,7 @@ namespace competitiemanager.Controllers
             ViewModel.game = Game;
             ViewModel.bets = _betRepository.AllBets.Where(g => g.GameId == id);
             ViewModel.currentUser = _userId;
+            ViewModel.placedBet = ViewModel.bets.FirstOrDefault(u => u.User.IdentityId == _userId);
             return View(ViewModel);
 
         }
