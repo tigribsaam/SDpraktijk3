@@ -4,14 +4,17 @@
 
 @foreach (var team in ViewBag.users)
 {
-    <div>
-        @*<a asp-controller="Team" asp-action="Details" asp-route-id="@team.TeamId">@team.Name</a>*@
-        <p>@team.Name</p>
-        <p>@team.IdentityId</p>
-        <br/>
-        @*@foreach (var playa in team.Players)
+<div>
+    @*<a asp-controller="Team" asp-action="Details" asp-route-id="@team.TeamId">@team.Name</a>*@
+    <p>@team.Name</p>
+    <p>@team.IdentityId</p>
+    <p>Bets:</p>
+    <ol>
+        @foreach (var playa in team.Bets)
         {
-            <p>@playa.Name</p>
-        }*@
-    </div>
+            <li>@playa.Game.HomeTeam.Team.Name</li>
+        }
+    </ol>
+    <br />
+</div>
 }

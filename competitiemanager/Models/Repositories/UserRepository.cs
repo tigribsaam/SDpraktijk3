@@ -21,7 +21,7 @@ namespace competitiemanager.Models.Repositories
         {
             get
             {
-                return _appDbConext.UsersToto.Include(b => b.Bets);
+                return _appDbConext.UsersToto.Include(b => b.Bets).ThenInclude(g => g.Game).ThenInclude(g => g.HomeTeam).ThenInclude(g => g.Team);
             }
         }
 

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace competitiemanager.Migrations
 {
-    public partial class initial : Migration
+    public partial class ersdtfgyu : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

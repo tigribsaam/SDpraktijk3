@@ -1,4 +1,4 @@
-﻿@model GameViewModel
+﻿@model GameDetailsViewModel
 
 @if (Model.game.Status < 3)
 {
@@ -27,4 +27,10 @@
         <p>afgelopen</p>
         <p>@Model.game.GoalsHome - @Model.game.GoalsAway</p>
         break;
+}
+
+<h2>weddenschappen:</h2>
+@foreach(var bet in Model.bets)
+{
+    <p>@bet.UserId</p>
 }

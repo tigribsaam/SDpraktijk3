@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using competitiemanager.Models.Interfaces;
 using competitiemanager.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace competitiemanager.Controllers
@@ -11,10 +13,16 @@ namespace competitiemanager.Controllers
     public class GameController : Controller
     {
         private readonly IGameRepository _gameRepository;
+        private readonly IBetRepository _betRepository;
+        private readonly IUserRepository _userRepository;
+        private string _userId;
 
-        public GameController(IGameRepository gameRepository)
+        public GameController(IGameRepository gameRepository, IBetRepository betRepository, IUserRepository userRepositroy, IHttpContextAccessor httpContextAccessor)
         {
             _gameRepository = gameRepository;
+            _betRepository = betRepository;
+            _userRepository = userRepositroy;
+            _userId = httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
         }
 
         public ViewResult List()
@@ -27,11 +35,15 @@ namespace competitiemanager.Controllers
 
         public ActionResult Details(int id)
         {
-            
             var Game = _gameRepository.GetGameById(id);
             if (Game == null)
                 return NotFound();
-            return View(Game);
+
+            GameDetailsViewModel ViewModel = new GameDetailsViewModel();
+            ViewModel.game = Game;
+            ViewModel.bets = _betRepository.AllBets.Where(g => g.GameId == id);
+            ViewModel.currentUser = _userId;
+            return View(ViewModel);
 
         }
 

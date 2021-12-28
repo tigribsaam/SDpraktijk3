@@ -10,8 +10,8 @@ using competitiemanager.Models;
 namespace competitiemanager.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20211212122913_initial")]
-    partial class initial
+    [Migration("20211228113541_ersdtfgyu")]
+    partial class ersdtfgyu
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

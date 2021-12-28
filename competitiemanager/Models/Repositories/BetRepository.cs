@@ -22,7 +22,7 @@ namespace competitiemanager.Models.Repositories
         {
             get
             {
-                return _appDbContext.Bets.Include(u => u.User).Include(g => g.Game);
+                return _appDbContext.Bets.Include(g => g.Game).Include(u => u.User);
             }          
         }
 
