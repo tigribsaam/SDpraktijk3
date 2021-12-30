@@ -4,20 +4,21 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @*C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\wwwroot\bootstrap\startbootstrap-new-age-gh-pages\css\styles.css*@
     <link href="/content/site.css" rel="stylesheet" />
     <title>Competitiemanager</title>
 </head>
 <body>
-    <nav>
+    <nav class="nav">
         <h1> Hallo </h1>
         <ul id="navbar">
-            <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-            <li><a asp-controller="Team" asp-action="List">Teams</a></li>
-            <li><a asp-controller="Bet" asp-action="Index">Bet</a></li>
-            <li><a asp-controller="Competition" asp-action="List">Competition</a></li>
-            <li><a asp-controller="Game" asp-action="List">Game</a></li>
-            <li><a asp-controller="TeamInComp" asp-action="List">TeamInComp</a></li>
-            <li><a asp-controller="User" asp-action="Index">User</a></li>
+            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+            <a class="nav-link" asp-controller="Team" asp-action="List">Teams</a>
+            <a class="nav-link" asp-controller="Bet" asp-action="Index">Bet</a>
+            <a class="nav-link" asp-controller="Competition" asp-action="List">Competition</a>
+            <a class="nav-link" asp-controller="Game" asp-action="List">Game</a>
+            <a class="nav-link" asp-controller="TeamInComp" asp-action="List">TeamInComp</a>
+            <a class="nav-link" asp-controller="User" asp-action="Index">User</a>
             <partial name="_LoginPartial"/>
         </ul>
     </nav>

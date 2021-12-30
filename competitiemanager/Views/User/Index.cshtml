@@ -1,21 +1,26 @@
 ﻿
+@{int i = 1;}
 
-<h1>USer</h1>
 
-@foreach (var team in ViewBag.users)
-{
-<div>
-    @*<a asp-controller="Team" asp-action="Details" asp-route-id="@team.TeamId">@team.Name</a>*@
-    <p>@team.Name</p>
-    <p>@team.IdentityId</p>
-    <p>@team.TotoScore</p>
-    @*<p>Bets:</p>
-    <ol>
-        @foreach (var playa in team.Bets)
-        {
-            <li>@playa.Game.HomeTeam.Team.Name</li>
-        }
-    </ol>*@
-    <br />
-</div>
-}
+<h1>Users</h1>
+
+
+<table>
+    <tr>
+        <th></th>
+        <th>Gebruikersnaam</th>
+        <th>Score</th>
+    </tr>
+    @foreach (var u in ViewBag.users)
+    {
+        <tr>
+            <td>@i</td>
+            <td>@u.Name</td>
+            <td>@u.TotoScore</td>
+
+        </tr>
+        i++;
+
+    }
+</table>
+

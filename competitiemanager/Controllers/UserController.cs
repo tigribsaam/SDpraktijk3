@@ -20,7 +20,9 @@ namespace competitiemanager.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.users = _userRepository.AllUsers;
+            var users = _userRepository.AllUsers.ToList();
+            users.Sort((a, b) => b.TotoScore.CompareTo(a.TotoScore));
+            ViewBag.users = users;
             return View();
         }
     }
