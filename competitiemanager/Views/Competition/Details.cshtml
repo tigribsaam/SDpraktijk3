@@ -6,67 +6,84 @@
 
 
 
-    <h3>Score</h3>
-    <table>
-        <tr>
-            <th></th>
-            <th>Team</th>
-            <th>GS</th>
-            <th>W</th>
-            <th>V</th>
-            <th>G</th>
-            <th>DV-DT</th>
-            <th>DS</th>
-            <th>P</th>
+    <h3>Stand</h3>
+    <table class="rankingTable">
+        <tr class="rankingTableHeaderRow">
+            <th class="rankingTableHeader"></th>
+            <th class="rankingTableHeader">Team</th>
+            <th class="rankingTableHeader">GS</th>
+            <th class="rankingTableHeader">W</th>
+            <th class="rankingTableHeader">V</th>
+            <th class="rankingTableHeader">G</th>
+            <th class="rankingTableHeader">DV-DT</th>
+            <th class="rankingTableHeader">DS</th>
+            <th class="rankingTableHeader">P</th>
         </tr>
         @foreach (var team in Model.Teams)
         {
-            <tr>
-                <td>@i</td>
-                <td>@team.Team.Name</td>
-
-                <td>@(team.GamesPlayed)</td>
-                <td>@team.GamesWon</td>
-                <td>@team.GamesLost</td>
-                <td>@team.GamesTied</td>
-                <td>@team.Goals - @team.CounterGoals</td>
-                <td>@team.DoelSaldo</td>
-                <td>@team.Points</td>
+            <tr class="rankingTableRow">
+                <td class="rankingTableItem">@i</td>
+                <td class="rankingTableItem">@team.Team.Name</td>
+                <td class="rankingTableItem">@(team.GamesPlayed)</td>
+                <td class="rankingTableItem">@team.GamesWon</td>
+                <td class="rankingTableItem">@team.GamesLost</td>
+                <td class="rankingTableItem">@team.GamesTied</td>
+                <td class="rankingTableItem">@team.Goals - @team.CounterGoals</td>
+                <td class="rankingTableItem">@team.DoelSaldo</td>
+                <td class="rankingTableItem">@team.Points</td>
 
             </tr>
             i++;
 
-            }
+        }
     </table>
 
 
-    <h3>Wedstrijden:</h3>
-    <ol>
-        @foreach (var game in Model.Games)
-        {
-            <li>
-                <a asp-controller="Game" asp-action="Details" asp-route-id="@game.GameId">@game.HomeTeam.Team.Name vs. @game.AwayTeam.Team.Name</a>
-                <p>@game.StartDateAndTime.ToString("dd-MM-yyyy")</p>
-                <p>@game.StartDateAndTime.ToLocalTime()</p>
-                @switch (game.Status)
-                {
-                    case 0:
-                        <p>Nog niet gespeeld</p>
-                        break;
-                    case 1:
-                        <p>Bezig</p>
-                        <p>@game.GoalsHome - @game.GoalsAway</p>
-                        break;
-                    case 3:
-                        <p>afgelopen</p>
-                        <p>@game.GoalsHome - @game.GoalsAway</p>
-                        break;
-                }
-            </li>
+    <h3>Wedstrijden</h3>
 
 
-        }
-    </ol>
 
+    @foreach (var game in Model.Games)
+    {
 
+        <div class="gameCard">
+            <a class="gameCardTitle" asp-controller="Game" asp-action="Details" asp-route-id="@game.GameId">@game.HomeTeam.Team.Name vs. @game.AwayTeam.Team.Name</a>
+            <table class="gameCardTable">
+                <tr>
+                    <td class="gameCardText"> @game.HomeTeam.Team.Name</td>
+                    <td><p class="gameCardText" >@game.StartDateAndTime.ToString("dd-MM-yyyy")</p></td>
+                    <td class="gameCardText"> @game.AwayTeam.Team.Name</td>
+                </tr>
+                <tr>
+                    <td class="gameCardScore" rowspan="2" style="padding-left: 60px">@game.GoalsHome</td>
+                    <td><p class="gameCardText">@game.StartDateAndTime.ToString("HH:mm")</p></td>
+                    <td class="gameCardScore" rowspan="2"  style="padding-right: 60px">@game.GoalsAway</td>
+                    
+                </tr>
+                <tr>
+                    @*<td></td>*@
+                    <td class="gameCardText"> @game.HomeTeam.Team.Location</td>
+                    
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        @switch (game.Status)
+                        {
+                            case 0:
+                                <p class="gameCardText">Nog niet gespeeld</p>
+                                break;
+                            case 1:
+                                <p class="gameCardText">Bezig</p>
+                                break;
+                            case 3:
+                                <p class="gameCardText"><b>Afgelopen</b></p>
+                                break;
+                        }
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    }
 </div>

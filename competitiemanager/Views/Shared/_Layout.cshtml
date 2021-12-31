@@ -10,19 +10,18 @@
 </head>
 <body>
     <nav class="nav">
-        <h1> Hallo </h1>
-        <ul id="navbar">
-            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
-            <a class="nav-link" asp-controller="Team" asp-action="List">Teams</a>
-            <a class="nav-link" asp-controller="Bet" asp-action="Index">Bet</a>
-            <a class="nav-link" asp-controller="Competition" asp-action="List">Competition</a>
-            <a class="nav-link" asp-controller="Game" asp-action="List">Game</a>
-            <a class="nav-link" asp-controller="TeamInComp" asp-action="List">TeamInComp</a>
-            <a class="nav-link" asp-controller="User" asp-action="Index">User</a>
-            <partial name="_LoginPartial"/>
+        <ul id="nav-list">
+            <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Hallo</a></li>
+            <li class="nav-item"><a class="nav-link" asp-controller="Team" asp-action="List">Teams</a></li>
+            <li class="nav-item"><a class="nav-link" asp-controller="Bet" asp-action="Index">Bet</a></li>
+            <li class="nav-item"><a class="nav-link" asp-controller="Competition" asp-action="List">Competition</a></li>
+            <li class="nav-item"><a class="nav-link" asp-controller="Game" asp-action="List">Game</a></li>
+            <li class="nav-item"><a class="nav-link" asp-controller="TeamInComp" asp-action="List">TeamInComp</a></li>
+            <li class="nav-item"><a class="nav-link" asp-controller="User" asp-action="Index">User</a></li>
+            <partial name="_LoginPartial" />
         </ul>
     </nav>
-    <div>
+    <div class="content">
         @RenderBody()
     </div>
     @RenderSection("Scripts", required: false)

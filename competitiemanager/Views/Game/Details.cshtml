@@ -1,16 +1,19 @@
 ﻿@model GameDetailsViewModel
 
+<h1>@Model.game.HomeTeam.Team.Name vs. @Model.game.AwayTeam.Team.Name </h1>
+
+
 @if (Model.game.Status < 3)
 {
-    <a asp-controller="Game" asp-action="inputScore" asp-route-id="@Model.game.GameId">Score invoeren</a>
+    <a class="abutton" asp-controller="Game" asp-action="inputScore" asp-route-id="@Model.game.GameId">Score invoeren</a>
 }
 
 @if (Model.game.Status < 2 && Model.placedBet == null)
 {
-    <a asp-controller="Bet" asp-action="PlaceBet" asp-route-id="@Model.game.GameId">Weddenschap plaatsen</a>
+    <a class="abutton" asp-controller="Bet" asp-action="PlaceBet" asp-route-id="@Model.game.GameId">Weddenschap plaatsen</a>
 }
 
-<h1>@Model.game.HomeTeam.Team.Name vs. @Model.game.AwayTeam.Team.Name </h1>
+
 <h3>@Model.game.HomeTeam.Team.Location</h3>
 <h3>@Model.game.StartDateAndTime.ToString("dd-MM-yyyy")</ </h3>
 

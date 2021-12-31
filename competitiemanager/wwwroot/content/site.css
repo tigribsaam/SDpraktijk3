@@ -1,15 +1,273 @@
 ﻿body {
-  background-color: mediumpurple;
+    background-color: mediumpurple;
+    margin: 0px;
+    height: 100%;
 }
 
-nav {
-    display: inline;
-}
-
-li{
-    display: inline;
+.content {
+    /*    margin-top: 30px;*/
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 20px;
 }
 
 h1 {
-    font-family: Comic Sans MS
+    font-family: Calibri;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+h2 {
+    font-family: Calibri;
+    font-size: 30px;
+}
+
+h3 {
+    font-family: Calibri;
+    font-size: 26px;
+}
+
+h4 {
+    font-family: Calibri;
+    font-size: 22px;
+}
+
+h5 {
+    font-family: Calibri;
+    font-size: 18px;
+}
+
+h6 {
+    font-family: Calibri;
+    font-size: 16px;
+}
+
+p {
+    font-family: Calibri;
+    font-size: 18px;
+}
+
+.abutton {
+    background-color: lightgray;
+    border-radius: 8px;
+    border-width: 0;
+    color: #333333;
+    display: inline-block;
+    font-family: Calibri;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 10px 12px;
+    text-align: center;
+    text-decoration: none;
+}
+
+/*
+.abutton:hover {
+    font-family: Calibri;
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+}
+
+.abutton:visited {
+    font-family: Calibri;
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+}*/
+
+
+
+
+
+
+.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    /*    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;*/
+}
+
+.nav-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.nav-item {
+    list-style-type: none;
+    float: left;
+    margin-top: 0px;
+    padding: 0px;
+}
+
+.nav-link {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    margin-top: 0px;
+    padding: 14px;
+    text-decoration: none;
+    background-color: #333;
+    border: none;
+    height: 100%;
+    font-family: Calibri;
+    font-size: 18px;
+}
+
+/* Change the link color to #111 (black) on hover */
+.nav-link:hover {
+    background-color: #111;
+}
+
+
+.compCard {
+    margin: 15px 0px 0px 0px;
+    padding: 0px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+
+
+.compCardTitle {
+    display: inline-block;
+    text-align: center;
+    background-color: deeppink;
+    padding: 10px 0px 10px 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 100%;
+    font-family: Calibri;
+    font-size: 18px;
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.compCardTitle:hover {
+    font-family: Calibri;
+    font-size: 18px;
+    text-decoration: none;
+    color: whitesmoke;
+    background-color: orchid;
+}
+
+.compCardTitle:visited {
+    font-family: Calibri;
+    font-size: 18px;
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.compCardtext {
+    font-family: Calibri;
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+    padding: 10px 20px 10px 20px;
+    margin: 0px;
+}
+
+.rankingTable {
+    border-collapse: collapse;
+    margin: 15px 0px 0px 0px;
+    padding: 5px;
+    background-color: #04AA6D;
+    /*    border-radius: 10px;*/
+    width: 100% ;
+    font-family: Calibri;
+}
+
+.rankingTableRow {
+    border: none;
+    background-color: lightgrey;
+    padding: 5px;
+    text-align: center;
+}
+
+.rankingTableRow:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.rankingTableHeaderRow {
+    background-color: #04AA6D;
+    color: white;
+    padding: 5px;
+    /*    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;*/
+}
+
+.rankingTableItem {
+    padding: 5px;
+}
+
+.gameCard {
+    margin: 15px 0px 0px 0px;
+    padding: 0px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+
+.gameCardTitle {
+    display: inline-block;
+    text-align: center;
+    background-color: royalblue;
+    padding: 10px 0px 10px 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 100%;
+    font-family: Calibri;
+    font-size: 24px;
+    text-decoration: none;
+    color: whitesmoke;
+    font-weight: bold;
+}
+
+.gameCardTitle:hover {
+    background-color: deepskyblue;
+}
+
+.gameCardTitle:visited {
+    color: whitesmoke;
+}
+
+.gameCardText {
+    font-family: Calibri;
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+    padding: 10px 20px 10px 20px;
+    margin: 0px;
+    text-align: center;
+}
+
+.gameCardTable {
+    width: 100%;
+    font-family: Calibri;
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+    padding: 10px 20px 10px 20px;
+    margin: 0px;
+}
+
+.gameCardScore {
+    text-align:center;
+    font-size: 32px;
+    font-weight: bold;
+    
+
 }

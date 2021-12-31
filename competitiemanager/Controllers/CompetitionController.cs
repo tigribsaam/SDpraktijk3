@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using competitiemanager.Models;
 using competitiemanager.Models.Interfaces;
 using competitiemanager.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -25,7 +26,7 @@ namespace competitiemanager.Controllers
         public ViewResult List()
         {
             CompetitionListViewModel CompListViewModel = new CompetitionListViewModel();
-            CompListViewModel.Competition = _competitionRepository.AllCompetitions;
+            CompListViewModel.Competition = _competitionRepository.AllCompetitions.Reverse();
             CompListViewModel.Team = _teamRepository.AllTeams;
             return View(CompListViewModel);
         }
@@ -37,6 +38,10 @@ namespace competitiemanager.Controllers
             if (comp == null)
                 return NotFound();
             comp.Teams.Sort((a, b) => b.Points.CompareTo(a.Points));
+            var gamesplayed = new List<Game>(comp.Games.Where(item => item.Status == 3));
+                //comp.Games.Where(item => item.Status == 3);
+            comp.Games.RemoveAll(item => item.Status == 3);
+            comp.Games.AddRange(gamesplayed);
             return View(comp);
 
         }

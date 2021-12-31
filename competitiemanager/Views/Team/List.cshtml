@@ -6,7 +6,7 @@
     @foreach (var team in Model.Team)
     {
         <div>
-            <a asp-controller="Team" asp-action="Details" asp-route-id ="@team.TeamId">@team.Name</a>
+            <a class="abutton" asp-controller="Team" asp-action="Details" asp-route-id ="@team.TeamId">@team.Name</a>
             <p>@team.Location</p>
             @foreach (var playa in team.Players)
             {

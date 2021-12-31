@@ -5,20 +5,10 @@
 
 @foreach (var comp in Model.Competition)
 {
-<div>
-    <a asp-controller="Competition" asp-action="Details" asp-route-id ="@comp.CompetitionId">@comp.Name</a>
-
-    <h3>Teams:</h3>
-    @foreach (var team in comp.Teams)
-    {
-       <p>@team.Team.Name</p>
-    }
-
-    @*<h3>Wedstrijden:</h3>
-    @foreach (var game in comp.Games)
-    {
-        <p>@game.HomeTeam.Name vs. @game.AwayTeam.Name</p>
-    }*@
+<div class="compCard">
+    <a class="compCardTitle" asp-controller="Competition" asp-action="Details" asp-route-id ="@comp.CompetitionId">@comp.Name</a>
+    <p class="compCardtext" >@comp.Teams.Count() Teams</p>
+    <p class="compCardtext" >van @comp.Games.First().StartDateAndTime.ToString("dd-MM-yyyy") tot @comp.Games.Last().StartDateAndTime.ToString("dd-MM-yyyy")</p>
 
 </div>
 } 
