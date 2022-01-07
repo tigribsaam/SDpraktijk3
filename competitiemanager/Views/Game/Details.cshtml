@@ -8,7 +8,7 @@
     <a class="abutton" asp-controller="Game" asp-action="inputScore" asp-route-id="@Model.game.GameId">Score invoeren</a>
 }
 
-@if (Model.game.Status < 2 && Model.placedBet == null)
+@if (Model.game.Status < 2 && Model.placedBet == null && Model.game.StartDateAndTime > DateTime.Now)
 {
     <a class="abutton" asp-controller="Bet" asp-action="PlaceBet" asp-route-id="@Model.game.GameId">Weddenschap plaatsen</a>
 }

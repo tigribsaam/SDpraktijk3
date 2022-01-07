@@ -5,7 +5,7 @@
 @foreach (var game in Model.Game)
 {
 <div>
-    <a asp-controller="Game" asp-action="Details" asp-route-id="@game.GameId">@game.HomeTeam.Team.Name vs. @game.AwayTeam.Team.Name</a>
+    <a class="abutton" asp-controller="Game" asp-action="Details" asp-route-id="@game.GameId">@game.HomeTeam.Team.Name vs. @game.AwayTeam.Team.Name</a>
     <p>@game.HomeTeam.Team.Location</p>
     <p>@game.StartDateAndTime.ToString("dd-MM-yyyy")</p>
     @switch (game.Status)

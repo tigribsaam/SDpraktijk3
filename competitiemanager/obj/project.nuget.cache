@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XDdXE0dmu7X8Mr4V8I13yfH4/+vQlQpsrki7PSncbMpLVkLGPjxHb2PNEkEuae/5QyEwlZL2Cd/zyBkCTBd0Ug==",
+  "dgSpecHash": "tLhHDp7+tCiNk+ij42z/H15YJufmVPNMotEos1xlHuF4UZ1cLbhIsEEx7t51oNxsnzeN4Y/dMZ4punUdgjmQWg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Birgi\\GitHub\\SDpraktijk3\\Competitiemanager\\competitiemanager.csproj",
+  "projectFilePath": "C:\\Users\\Birgi\\GitHub\\SDpraktijk3\\competitiemanager\\competitiemanager.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Birgi\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.21\\microsoft.aspnetcore.cryptography.internal.3.1.21.nupkg.sha512",
     "C:\\Users\\Birgi\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.21\\microsoft.aspnetcore.cryptography.keyderivation.3.1.21.nupkg.sha512",

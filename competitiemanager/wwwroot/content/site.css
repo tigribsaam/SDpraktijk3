@@ -271,3 +271,13 @@ p {
     
 
 }
+
+.divinline {
+    float: left;
+    padding-right: 200px
+}
+
+.form {
+    font-family: Calibri;
+    font-size: 26px;
+}
