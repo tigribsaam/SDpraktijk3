@@ -1,6 +1,6 @@
 ﻿@model GameViewModel
 
-<h1>Game</h1>
+<h1>Wedstrijd</h1>
 
 @foreach (var game in Model.Game)
 {
@@ -8,6 +8,7 @@
     <a class="abutton" asp-controller="Game" asp-action="Details" asp-route-id="@game.GameId">@game.HomeTeam.Team.Name vs. @game.AwayTeam.Team.Name</a>
     <p>@game.HomeTeam.Team.Location</p>
     <p>@game.StartDateAndTime.ToString("dd-MM-yyyy")</p>
+    <p>@game.StartDateAndTime.ToString("HH:mm")</p>
     @switch (game.Status)
     {
         case 0:

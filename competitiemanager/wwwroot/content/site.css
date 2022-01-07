@@ -8,7 +8,7 @@
     /*    margin-top: 30px;*/
     padding-left: 40px;
     padding-right: 40px;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
 }
 
 h1 {
@@ -274,10 +274,18 @@ p {
 
 .divinline {
     float: left;
-    padding-right: 200px
+    width: 45%;
+    padding-right: 5%;
 }
 
 .form {
     font-family: Calibri;
     font-size: 26px;
+}
+
+.betcard {
+    
+    background-color: lightgray;
+    border-radius: 10px;
+    
 }

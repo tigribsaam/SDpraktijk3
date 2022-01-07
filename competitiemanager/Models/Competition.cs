@@ -25,16 +25,10 @@ namespace competitiemanager.Models
 
         public static ValidationResult TestLengthTeams(List<int> Teams, ValidationContext pValidationContext)
         {
-            if (Teams == null || Teams.Count < 2) // cannot start with a digit
-                return new ValidationResult("Minimaal twee teams moeten meedoen aan de competitie", new List<string> { "CategoryName" });
+            if (Teams == null || Teams.Count < 2 || Teams.Count > 100) // cannot start with a digit
+                return new ValidationResult("Minimaal 2 en maximaal 100 teams moeten meedoen aan de competitie", new List<string> { "CategoryName" });
             return ValidationResult.Success;
         }
 
-        public static ValidationResult TestLengthTeams1(List<String> Teams, ValidationContext pValidationContext)
-        {
-            if (Teams == null || Teams.Count < 2) // cannot start with a digit
-                return new ValidationResult("Minimaal twee teams moeten meedoen aan de competitie", new List<string> { "CategoryName" });
-            return ValidationResult.Success;
-        }
     }
 }

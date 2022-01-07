@@ -5,23 +5,23 @@
     ViewData["Title"] = "Log in";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1>Inloggen</h1>
 <div class="row">
     <div class="col-md-4">
         <section>
             <form id="account" method="post">
-                <h4>Use a local account to log in.</h4>
+                <h4>Gebruik een lokaal account om in te loggen.</h4>
                 <hr />
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="Input.Email"></label>
-                    <input asp-for="Input.Email" class="form-control" />
-                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    <label class="form" asp-for="Input.Email">Gebruikersnaam</label>
+                    <input class="form" asp-for="Input.Email"  />
+                    <span class="form" asp-validation-for="Input.Email" ></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Input.Password"></label>
-                    <input asp-for="Input.Password" class="form-control" />
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    <label class="form" asp-for="Input.Password">Wachtwoord</label>
+                    <input class="form" asp-for="Input.Password" class="form-control" />
+                    <span class="form" asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
                 @*<div class="form-group">
                     <div class="checkbox">
@@ -32,14 +32,14 @@
                     </div>
                 </div>*@
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Log in</button>
+                    <button type="submit" class="abutton">Inloggen</button>
                 </div>
                 <div class="form-group">
                     @*<p>
                         <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
                     </p>*@
                     <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Nog geen account? Registreer als een nieuwe gebruiker</a>
                     </p>
                 </div>
             </form>

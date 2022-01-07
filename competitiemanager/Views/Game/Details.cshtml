@@ -1,6 +1,6 @@
 ﻿@model GameDetailsViewModel
 
-<h1>@Model.game.HomeTeam.Team.Name vs. @Model.game.AwayTeam.Team.Name </h1>
+<h1> @Model.game.HomeTeam.Team.Name vs. @Model.game.AwayTeam.Team.Name </h1>
 
 
 @if (Model.game.Status < 3)
@@ -12,41 +12,47 @@
 {
     <a class="abutton" asp-controller="Bet" asp-action="PlaceBet" asp-route-id="@Model.game.GameId">Weddenschap plaatsen</a>
 }
+<br />
 
+<div class="divinline">
+    <h4>@Model.game.HomeTeam.Team.Location</h4>
+    <h4>@Model.game.StartDateAndTime.ToString("dd-MM-yyyy")</ </h4>
+    <h4>@Model.game.StartDateAndTime.ToString("HH:mm")</h4>
 
-<h3>@Model.game.HomeTeam.Team.Location</h3>
-<h3>@Model.game.StartDateAndTime.ToString("dd-MM-yyyy")</ </h3>
-
-@switch (Model.game.Status)
-{
-    case 0:
-        <p>Nog niet gespeeld</p>
-        break;
-    case 2:
-        <p>Bezig</p>
-        <p>@Model.game.GoalsHome - @Model.game.GoalsAway</p>
-        break;
-    case 3:
-        <p>afgelopen</p>
-        <p>@Model.game.GoalsHome - @Model.game.GoalsAway</p>
-        break;
-}
-
-<h2>Weddenschap geplaatst:</h2>
-@if (Model.placedBet != null)
-{
-    <p>Voorspelling:</p>
-    @switch (Model.placedBet.Prediction)
+    @switch (Model.game.Status)
     {
-        case 1:
-            <p>thuis wint</p>
+        case 0:
+            <p>Nog niet gespeeld</p>
             break;
         case 2:
-            <p>uit wint</p>
+            <p>Bezig</p>
+            <p>@Model.game.GoalsHome - @Model.game.GoalsAway</p>
             break;
         case 3:
-            <p>gelijkspel</p>
+            <p>afgelopen</p>
+            <p>@Model.game.GoalsHome - @Model.game.GoalsAway</p>
             break;
     }
+</div>
 
-}
+
+<div >
+    <h4 >Weddenschap geplaatst:</h4>
+    @if (Model.placedBet != null)
+    {
+        <p >Voorspelling:</p>
+        @switch (Model.placedBet.Prediction)
+        {
+            case 1:
+                <p >thuis wint</p>
+                break;
+            case 2:
+                <p >uit wint</p>
+                break;
+            case 3:
+                <p >gelijkspel</p>
+                break;
+        }
+
+    }
+</div>
