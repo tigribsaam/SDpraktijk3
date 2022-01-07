@@ -1,4 +1,5 @@
-﻿using System;
+﻿using competitiemanager.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ namespace competitiemanager.Models.Interfaces
     {
         IEnumerable<Team> AllTeams { get; }
         Team GetTeamById(int teamId);
+        void CreateTeam(NewTeamViewModel model);
         
     }
 }

@@ -17,6 +17,7 @@ namespace competitiemanager.Models
         [Display(Name = "Naam")]
         [StringLength(50)]
         public String Name { get; set; }
+        [BindNever]
         public List<Player> Players { get; set; }
         [Required(ErrorMessage = "Voer de thuislocatie van het team in")]
         [Display(Name = "Locatie")]

@@ -27,8 +27,6 @@ namespace competitiemanager.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //var splitStringConverter = new ValueConverter<IEnumerable<string>, string>(v => string.Join(";", v), v => v.Split(new[] { ';' }));
-            //modelBuilder.Entity<Team>().Property(nameof(Team.Players)).HasConversion(splitStringConverter);
 
             base.OnModelCreating(modelBuilder);
 
@@ -101,108 +99,109 @@ namespace competitiemanager.Models
             modelBuilder.Entity<Player>().HasData(
                 new Player { PlayerId = 1, Name = "speler 1" , TeamId = 1},
                 new Player { PlayerId = 2, Name = "speler 2" , TeamId = 1},
-                new Player { PlayerId = 3, Name = "speler 3" , TeamId = 1},
-                new Player { PlayerId = 4, Name = "speler 4" , TeamId = 1},
-                new Player { PlayerId = 5, Name = "speler 5" , TeamId = 1},
-                new Player { PlayerId = 6, Name = "speler 6" , TeamId = 1},
-                new Player { PlayerId = 7, Name = "speler 7" , TeamId = 2},
-                new Player { PlayerId = 8, Name = "speler 8" , TeamId = 2},
-                new Player { PlayerId = 9, Name = "speler 9" , TeamId = 2},
-                new Player { PlayerId = 10, Name = "speler 10" , TeamId = 2},
-                new Player { PlayerId = 11, Name = "speler 11" , TeamId = 2},
-                new Player { PlayerId = 12, Name = "speler 12" , TeamId = 2}
+                new Player { PlayerId = 3, Name = "speler 3" , TeamId = 2},
+                new Player { PlayerId = 4, Name = "speler 4" , TeamId = 2},
+                new Player { PlayerId = 5, Name = "speler 5" , TeamId = 3},
+                new Player { PlayerId = 6, Name = "speler 6" , TeamId = 3},
+                new Player { PlayerId = 7, Name = "speler 7" , TeamId = 4},
+                new Player { PlayerId = 8, Name = "speler 8" , TeamId = 4},
+                new Player { PlayerId = 9, Name = "speler 9" , TeamId = 5},
+                new Player { PlayerId = 10, Name = "speler 10" , TeamId = 5},
+                new Player { PlayerId = 11, Name = "speler 11" , TeamId = 6},
+                new Player { PlayerId = 12, Name = "speler 12" , TeamId = 6}
                 );
 
 
-            //modelBuilder.Entity<User>().HasData(
-            //    new User
-            //    {
-            //        UserId = 1,
-            //        Name = "Ad Random",
-            //        TotoScore = 0,
-            //        Bets = null
-            //    });
+            modelBuilder.Entity<User>().HasData(
+                new User
+                {
+                    UserId = 1,
+                    Name = "Ad Random",
+                    TotoScore = 20,
+                    Bets = null
+                },
+                new User
+                {
+                    UserId = 2,
+                    Name = "Arie Verdeci",
+                    TotoScore = 45,
+                    Bets = null
+                },
+                new User
+                {
+                    UserId = 3,
+                    Name = "Beau Ter Ham",
+                    TotoScore = 5,
+                    Bets = null
+                }
+                );
 
-            //modelBuilder.Entity<Competition>().HasData(
-            //    new Competition
-            //    {
-            //        CompetitionId = 1,
-            //        Name = "test competitie 1",
-            //        Teams = new List<TeamInCompetition>(),
-            //        Games = new List<Game>()
-            //    },
-            //    new Competition
-            //    {
-            //        CompetitionId = 2,
-            //        Name = "test competitie 2",
-            //        Teams = new List<TeamInCompetition>(),
-            //        Games = new List<Game>()
-            //    });
+            modelBuilder.Entity<Competition>().HasData(
+                new Competition
+                {
+                    CompetitionId = 1,
+                    Name = "Competitie 1",
+                    Teams = new List<TeamInCompetition>(),
+                    Games = new List<Game>()
+                });
 
-            //modelBuilder.Entity<TeamInCompetition>().HasData(
-            //    new TeamInCompetition
-            //    {
-            //        TeamInCompetitionId = 1,
-            //        TeamId = 1,
-            //        CompetitionId = 1,
-            //        GamesPlayed = 0,
-            //        GamesWon = 0,
-            //        GamesLost = 0,
-            //        GamesTied = 0,
-            //        Goals = 0,
-            //        CounterGoals = 0,
-            //        Points = 0,
-            //        DoelSaldo = 0
-            //    },
-            //    new TeamInCompetition
-            //    {
-            //        TeamInCompetitionId = 2,
-            //        TeamId = 2,
-            //        CompetitionId = 1,
-            //        GamesPlayed = 0,
-            //        GamesWon = 0,
-            //        GamesLost = 0,
-            //        GamesTied = 0,
-            //        Goals = 0,
-            //        CounterGoals = 0,
-            //        Points = 0,
-            //        DoelSaldo = 0
-            //    }
-            //    );
+            modelBuilder.Entity<TeamInCompetition>().HasData(
+                new TeamInCompetition
+                {
+                    TeamInCompetitionId = 1,
+                    TeamId = 1,
+                    CompetitionId = 1,
+                    GamesPlayed = 1,
+                    GamesWon = 1,
+                    GamesLost = 0,
+                    GamesTied = 0,
+                    Goals = 2,
+                    CounterGoals = 0,
+                    Points = 3,
+                    DoelSaldo = 2
+                },
+                new TeamInCompetition
+                {
+                    TeamInCompetitionId = 2,
+                    TeamId = 2,
+                    CompetitionId = 1,
+                    GamesPlayed = 1,
+                    GamesWon = 0,
+                    GamesLost = 1,
+                    GamesTied = 0,
+                    Goals = 0,
+                    CounterGoals = 2,
+                    Points = 0,
+                    DoelSaldo = -2
+                }
+                );
 
-            //modelBuilder.Entity<Game>().HasData(
-            //    new Game
-            //    {
-            //        GameId = 1,
-            //        CompetitionId = 1,
-            //        HomeTeamId = 1,
-            //        AwayTeamId = 2,
-            //        StartDateAndTime = DateTime.Now,
-            //        Status = 0
+            modelBuilder.Entity<Game>().HasData(
+                new Game
+                {
+                    GameId = 1,
+                    CompetitionId = 1,
+                    HomeTeamId = 1,
+                    AwayTeamId = 2,
+                    StartDateAndTime = DateTime.Now.AddDays(-1),
+                    Status = 3,
+                    GoalsAway = 0,
+                    GoalsHome = 2
 
-            //    },
-            //    new Game
-            //    {
-            //        GameId = 2,
-            //        CompetitionId = 1,
-            //        HomeTeamId = 2,
-            //        AwayTeamId = 1,
-            //        StartDateAndTime = DateTime.Now,
-            //        Status = 0
 
-            //    },
-            //    new Game
-            //    {
-            //        GameId = 3,
-            //        CompetitionId = 2,
-            //        HomeTeamId = 2,
-            //        AwayTeamId = 1,
-            //        StartDateAndTime = DateTime.Now,
-            //        Status = 3,
-            //        GoalsHome = 0,
-            //        GoalsAway = 3
+                },
+                new Game
+                {
+                    GameId = 2,
+                    CompetitionId = 1,
+                    HomeTeamId = 2,
+                    AwayTeamId = 1,
+                    StartDateAndTime = DateTime.Now.AddDays(6),
+                    Status = 0,
+                    GoalsAway = 0,
+                    GoalsHome = 0
 
-            //    });
+                });
 
         }
     }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace competitiemanager.Migrations
 {
-    public partial class ersdtfgyu : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -65,8 +65,8 @@ namespace competitiemanager.Migrations
                 {
                     TeamId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true),
-                    Location = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
+                    Location = table.Column<string>(maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -314,6 +314,11 @@ namespace competitiemanager.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Competitions",
+                columns: new[] { "CompetitionId", "Name" },
+                values: new object[] { 1, "Competitie 1" });
+
+            migrationBuilder.InsertData(
                 table: "Teams",
                 columns: new[] { "TeamId", "Location", "Name" },
                 values: new object[,]
@@ -327,23 +332,52 @@ namespace competitiemanager.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "UsersToto",
+                columns: new[] { "UserId", "IdentityId", "Name", "Role", "TotoScore" },
+                values: new object[,]
+                {
+                    { 1, null, "Ad Random", null, 20 },
+                    { 2, null, "Arie Verdeci", null, 45 },
+                    { 3, null, "Beau Ter Ham", null, 5 }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Players",
                 columns: new[] { "PlayerId", "Name", "TeamId" },
                 values: new object[,]
                 {
                     { 1, "speler 1", 1 },
                     { 2, "speler 2", 1 },
-                    { 3, "speler 3", 1 },
-                    { 4, "speler 4", 1 },
-                    { 5, "speler 5", 1 },
-                    { 6, "speler 6", 1 },
-                    { 7, "speler 7", 2 },
-                    { 8, "speler 8", 2 },
-                    { 9, "speler 9", 2 },
-                    { 10, "speler 10", 2 },
-                    { 11, "speler 11", 2 },
-                    { 12, "speler 12", 2 }
+                    { 3, "speler 3", 2 },
+                    { 4, "speler 4", 2 },
+                    { 5, "speler 5", 3 },
+                    { 6, "speler 6", 3 },
+                    { 7, "speler 7", 4 },
+                    { 8, "speler 8", 4 },
+                    { 9, "speler 9", 5 },
+                    { 10, "speler 10", 5 },
+                    { 11, "speler 11", 6 },
+                    { 12, "speler 12", 6 }
                 });
+
+            migrationBuilder.InsertData(
+                table: "TeamInComps",
+                columns: new[] { "TeamInCompetitionId", "CompetitionId", "CounterGoals", "DoelSaldo", "GamesLost", "GamesPlayed", "GamesTied", "GamesWon", "Goals", "Points", "TeamId" },
+                values: new object[,]
+                {
+                    { 1, 1, 0, 2, 0, 1, 0, 1, 2, 3, 1 },
+                    { 2, 1, 2, -2, 1, 1, 0, 0, 0, 0, 2 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Games",
+                columns: new[] { "GameId", "AwayTeamId", "CompetitionId", "GoalsAway", "GoalsHome", "HomeTeamId", "StartDateAndTime", "Status" },
+                values: new object[] { 1, 2, 1, 0, 2, 1, new DateTime(2022, 1, 6, 21, 23, 15, 392, DateTimeKind.Local).AddTicks(2195), 3 });
+
+            migrationBuilder.InsertData(
+                table: "Games",
+                columns: new[] { "GameId", "AwayTeamId", "CompetitionId", "GoalsAway", "GoalsHome", "HomeTeamId", "StartDateAndTime", "Status" },
+                values: new object[] { 2, 1, 1, 0, 0, 2, new DateTime(2022, 1, 13, 21, 23, 15, 395, DateTimeKind.Local).AddTicks(506), 0 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

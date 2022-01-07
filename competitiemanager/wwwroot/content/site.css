@@ -1,5 +1,5 @@
 ﻿body {
-    background-color: mediumpurple;
+    background-color: white;
     margin: 0px;
     height: 100%;
 }
@@ -64,21 +64,6 @@ p {
     text-decoration: none;
 }
 
-/*
-.abutton:hover {
-    font-family: Calibri;
-    font-size: 18px;
-    text-decoration: none;
-    color: black;
-}
-
-.abutton:visited {
-    font-family: Calibri;
-    font-size: 18px;
-    text-decoration: none;
-    color: black;
-}*/
-
 
 
 
@@ -90,10 +75,7 @@ p {
     padding: 0;
     overflow: hidden;
     background-color: #333;
-    /*    position: fixed;
-    top: 0px;
-    right: 0px;
-    left: 0px;*/
+
 }
 
 .nav-list {
@@ -129,17 +111,19 @@ p {
     font-size: 18px;
 }
 
-/* Change the link color to #111 (black) on hover */
+
 .nav-link:hover {
     background-color: #111;
 }
 
 
 .compCard {
-    margin: 15px 0px 0px 0px;
+    margin: 15px auto 0px auto;
     padding: 0px;
-    background-color: whitesmoke;
+    background-color: #f2f2f2;
     border-radius: 10px;
+    max-width: 750px;
+
 }
 
 
@@ -183,12 +167,13 @@ p {
 
 .rankingTable {
     border-collapse: collapse;
-    margin: 15px 0px 0px 0px;
+    margin: 15px auto 0px auto;
     padding: 5px;
     background-color: #04AA6D;
     /*    border-radius: 10px;*/
-    width: 100% ;
+    width: 100%;
     font-family: Calibri;
+    max-width: 750px;
 }
 
 .rankingTableRow {
@@ -206,8 +191,7 @@ p {
     background-color: #04AA6D;
     color: white;
     padding: 5px;
-    /*    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;*/
+
 }
 
 .rankingTableItem {
@@ -215,10 +199,11 @@ p {
 }
 
 .gameCard {
-    margin: 15px 0px 0px 0px;
+    margin: 15px auto 0px auto;
     padding: 0px;
-    background-color: whitesmoke;
+    background-color: #f2f2f2;
     border-radius: 10px;
+    max-width: 750px;
 }
 
 .gameCardTitle {
@@ -262,6 +247,7 @@ p {
     color: black;
     padding: 10px 20px 10px 20px;
     margin: 0px;
+    table-layout: fixed;
 }
 
 .gameCardScore {
@@ -280,7 +266,7 @@ p {
 
 .form {
     font-family: Calibri;
-    font-size: 26px;
+    font-size: 18px;
 }
 
 .betcard {
@@ -289,3 +275,34 @@ p {
     border-radius: 10px;
     
 }
+
+.text-danger {
+    font-family: Calibri;
+    font-size: 20px;
+    color: red;
+}
+
+.players{
+    float:left;
+    margin: 5px;
+}
+
+.form-horizontal{
+    margin-bottom:20px;
+}
+
+.teamCard {
+    margin: 15px;
+    padding: 15px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    float: left;
+    width: 250px;
+    font-family: Calibri;
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+    margin: 5px;
+    text-align: center;
+}
+

@@ -2,15 +2,15 @@
 
 
 
-<form asp-action="NewTeam" enctype="multipart/form-data" method="post" class=" form-horizontal" role="form">
+<form asp-action="NewTeam" enctype="multipart/form-data" method="post" class=" form-horizontal" role="form" >
     <h1>Nieuw team aanmaken</h1>
 
     <div asp-validation-summary="All" class="text-danger"></div>
 
     <div class="form-group">
-        <label asp-for="Name" class="col-md-2 control-label"></label>
+        <label asp-for="Name" class="form"></label>
         <div class="col-md-5">
-            <input asp-for="Name" class="form-control" />
+            <input asp-for="Name" class="form" />
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
     </div>
@@ -18,28 +18,52 @@
     <br />
 
     <div class="form-group">
-        <label asp-for="Location" class="col-md-2 control-label"></label>
+        <label asp-for="Location" class="form"></label>
         <div class="col-md-5">
-            <input asp-for="Location" class="form-control" />
+            <input asp-for="Location" class="form" />
             <span asp-validation-for="Location" class="text-danger"></span>
         </div>
     </div>
 
     <br />
 
-    <p>Voeg minimaal 2 en maximaal 20 spelers toe aan het team</p>
-    @for (int i = 1; i <= 20; i++)
-    {
-        <label>@i</label>
-        <input name="Players" />
+    <div style="display:block;">
+        
+            <table>
+                
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                <tr>
+                    <td>
+                        <label style="float:left" class="form">@i  <input name="Players" /></label>
+                    </td>
+                    <td>
+                        <label style="float:left" class="form">@(i+5)  <input name="Players" /></label>
+                    </td>
+                    <td>
+                        <label style="float:left" class="form">@(i+10)  <input name="Players" /></label>
+                    </td>
+                    <td>
+                        <label style="float:left" class="form">@(i+15)  <input name="Players" /></label>
+                    </td>
+                </tr>
+                    }
+                    
+            </table>
 
-    }
+
+
+
+
+
+        
+    </div>
 
     <br />
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-5">
-            <input type="submit" class="btn btn-primary" value="Team aanmaken" />
+    <div class="form" style="display:block;">
+        <div class="form">
+            <input type="submit" class="abutton" value="Team aanmaken" />
         </div>
     </div>
 

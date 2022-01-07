@@ -3,6 +3,11 @@
  <h1>Competities</h1>
 <a class="abutton" asp-area="" asp-controller="Competition" asp-action="NewComp">Nieuwe competitie aanmaken</a>
 
+@if(Model.Competition != null || Model.Competition.Count() != 0) 
+{ 
+}
+
+
 @foreach (var comp in Model.Competition)
 {
 <div class="compCard">

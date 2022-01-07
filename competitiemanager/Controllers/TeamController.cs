@@ -48,7 +48,7 @@ namespace competitiemanager.Controllers
 
             if (ModelState.IsValid)
             {
- //               _teamRepository.CreateComp(model);
+                _teamRepository.CreateTeam(model);
                 return RedirectToAction("List");
             }
             return View(model);

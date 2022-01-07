@@ -259,6 +259,13 @@ namespace competitiemanager.Migrations
                     b.HasKey("CompetitionId");
 
                     b.ToTable("Competitions");
+
+                    b.HasData(
+                        new
+                        {
+                            CompetitionId = 1,
+                            Name = "Competitie 1"
+                        });
                 });
 
             modelBuilder.Entity("competitiemanager.Models.Game", b =>
@@ -298,6 +305,30 @@ namespace competitiemanager.Migrations
                     b.HasIndex("HomeTeamId");
 
                     b.ToTable("Games");
+
+                    b.HasData(
+                        new
+                        {
+                            GameId = 1,
+                            AwayTeamId = 2,
+                            CompetitionId = 1,
+                            GoalsAway = 0,
+                            GoalsHome = 2,
+                            HomeTeamId = 1,
+                            StartDateAndTime = new DateTime(2022, 1, 6, 21, 23, 15, 392, DateTimeKind.Local).AddTicks(2195),
+                            Status = 3
+                        },
+                        new
+                        {
+                            GameId = 2,
+                            AwayTeamId = 1,
+                            CompetitionId = 1,
+                            GoalsAway = 0,
+                            GoalsHome = 0,
+                            HomeTeamId = 2,
+                            StartDateAndTime = new DateTime(2022, 1, 13, 21, 23, 15, 395, DateTimeKind.Local).AddTicks(506),
+                            Status = 0
+                        });
                 });
 
             modelBuilder.Entity("competitiemanager.Models.Player", b =>
@@ -336,61 +367,61 @@ namespace competitiemanager.Migrations
                         {
                             PlayerId = 3,
                             Name = "speler 3",
-                            TeamId = 1
+                            TeamId = 2
                         },
                         new
                         {
                             PlayerId = 4,
                             Name = "speler 4",
-                            TeamId = 1
+                            TeamId = 2
                         },
                         new
                         {
                             PlayerId = 5,
                             Name = "speler 5",
-                            TeamId = 1
+                            TeamId = 3
                         },
                         new
                         {
                             PlayerId = 6,
                             Name = "speler 6",
-                            TeamId = 1
+                            TeamId = 3
                         },
                         new
                         {
                             PlayerId = 7,
                             Name = "speler 7",
-                            TeamId = 2
+                            TeamId = 4
                         },
                         new
                         {
                             PlayerId = 8,
                             Name = "speler 8",
-                            TeamId = 2
+                            TeamId = 4
                         },
                         new
                         {
                             PlayerId = 9,
                             Name = "speler 9",
-                            TeamId = 2
+                            TeamId = 5
                         },
                         new
                         {
                             PlayerId = 10,
                             Name = "speler 10",
-                            TeamId = 2
+                            TeamId = 5
                         },
                         new
                         {
                             PlayerId = 11,
                             Name = "speler 11",
-                            TeamId = 2
+                            TeamId = 6
                         },
                         new
                         {
                             PlayerId = 12,
                             Name = "speler 12",
-                            TeamId = 2
+                            TeamId = 6
                         });
                 });
 
@@ -402,10 +433,14 @@ namespace competitiemanager.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Location")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.HasKey("TeamId");
 
@@ -494,6 +529,36 @@ namespace competitiemanager.Migrations
                     b.HasIndex("TeamId");
 
                     b.ToTable("TeamInComps");
+
+                    b.HasData(
+                        new
+                        {
+                            TeamInCompetitionId = 1,
+                            CompetitionId = 1,
+                            CounterGoals = 0,
+                            DoelSaldo = 2,
+                            GamesLost = 0,
+                            GamesPlayed = 1,
+                            GamesTied = 0,
+                            GamesWon = 1,
+                            Goals = 2,
+                            Points = 3,
+                            TeamId = 1
+                        },
+                        new
+                        {
+                            TeamInCompetitionId = 2,
+                            CompetitionId = 1,
+                            CounterGoals = 2,
+                            DoelSaldo = -2,
+                            GamesLost = 1,
+                            GamesPlayed = 1,
+                            GamesTied = 0,
+                            GamesWon = 0,
+                            Goals = 0,
+                            Points = 0,
+                            TeamId = 2
+                        });
                 });
 
             modelBuilder.Entity("competitiemanager.Models.User", b =>
@@ -518,6 +583,26 @@ namespace competitiemanager.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("UsersToto");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            Name = "Ad Random",
+                            TotoScore = 20
+                        },
+                        new
+                        {
+                            UserId = 2,
+                            Name = "Arie Verdeci",
+                            TotoScore = 45
+                        },
+                        new
+                        {
+                            UserId = 3,
+                            Name = "Beau Ter Ham",
+                            TotoScore = 5
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

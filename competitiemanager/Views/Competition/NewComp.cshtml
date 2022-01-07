@@ -10,20 +10,20 @@
 
     <div asp-validation-summary="All" class="text-danger"></div>
 
-    <div class="form-group">
-        <label asp-for="Name" class="col-md-2 control-label"></label>
+    <div class="form">
+        <label asp-for="Name" class="form"></label>
         <div class="col-md-5">
-            <input asp-for="Name" class="form-control" />
+            <input asp-for="Name" class="form" />
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
     </div>
 
     <div>
-        @*<label asp-for="SelectedTeam" class="col-md-2 control-label"></label>*@
             @foreach (var team in ViewBag.Teams)
             {
-                <label>
-                    <input type="checkbox"
+                <label class="form">
+                    <input class="form"
+                           type="checkbox"
                             name="SelectedTeam"
                             value="@team.TeamId"
                            @if (Model.SelectedTeam.Contains(team.TeamId))
@@ -39,7 +39,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-5">
-            <input type="submit" class="btn btn-primary" value="competitie aanmaken" />
+            <input type="submit" class="abutton" value="competitie aanmaken" />
         </div>
     </div>
 

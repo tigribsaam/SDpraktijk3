@@ -102,7 +102,7 @@ namespace competitiemanager.Models.Repositories
                     HomeTeam.Points += 3;// HomeTeam.GamesWon++;
                     AwayTeam.GamesLost += 1; //= AwayTeam.GamesLost++;
                 }
-                else
+                if (theGame.GoalsHome < theGame.GoalsAway)
                 {
                     AwayTeam.GamesWon += 1;
                     AwayTeam.Points += 3;//= AwayTeam.GamesWon++;
