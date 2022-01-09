@@ -32,6 +32,7 @@ namespace competitiemanager.Models.Repositories
 
         public void CreateTeam(NewTeamViewModel model)
         {
+
             Team newTeam = new Team
             {
                 Name = model.Name,
@@ -41,6 +42,7 @@ namespace competitiemanager.Models.Repositories
             _appDbContext.Teams.Add(newTeam);
             _appDbContext.SaveChanges();
 
+            //create new object for each player
             foreach(var playa in model.Players)
             {
                 Player newPlayer = new Player

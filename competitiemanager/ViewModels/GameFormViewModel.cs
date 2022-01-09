@@ -16,10 +16,12 @@ namespace competitiemanager.ViewModels
         [Display(Name = "Doelpunten thuis")]
         [Range(0, 1000, ErrorMessage = "Voer geen negatieve waarden in")]
         public int GoalsHome { get; set; }
+
         [Required(ErrorMessage = "Voer het aantal doelpunten in")]
         [Display(Name = "Doelpunten uit")]
         [Range(0, 1000, ErrorMessage = "Voer geen negatieve waarden in")]
         public int GoalsAway { get; set; }
+
         public Competition comp { get; set; }
 
 

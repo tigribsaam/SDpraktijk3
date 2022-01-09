@@ -44,7 +44,6 @@ namespace competitiemanager
 
 
             services.AddControllersWithViews();
-            //userid?
             services.AddHttpContextAccessor();
             services.AddRazorPages();
 

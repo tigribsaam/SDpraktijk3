@@ -28,6 +28,7 @@ namespace competitiemanager.Controllers
             CompetitionListViewModel CompListViewModel = new CompetitionListViewModel();
             CompListViewModel.Competition = _competitionRepository.AllCompetitions.Reverse();
             CompListViewModel.Team = _teamRepository.AllTeams;
+
             return View(CompListViewModel);
         }
 
@@ -37,13 +38,15 @@ namespace competitiemanager.Controllers
             var comp = _competitionRepository.GetCompById(id);
             if (comp == null)
                 return NotFound();
+            //sort - based on points
             comp.Teams.Sort((a, b) => b.Points.CompareTo(a.Points));
             
-            //comp.Games.Where(item => item.Status == 3);
+            //sort - based on datetime, then place all ended games in the end of list
             comp.Games.Sort((a, b) => a.StartDateAndTime.CompareTo(b.StartDateAndTime));
             var gamesplayed = new List<Game>(comp.Games.Where(item => item.Status == 3));
             comp.Games.RemoveAll(item => item.Status == 3);
             comp.Games.AddRange(gamesplayed);
+
             return View(comp);
 
         }
@@ -51,8 +54,9 @@ namespace competitiemanager.Controllers
         [Authorize]
         public IActionResult NewComp()
         {
-            var model = new NewCompViewModel { };
+            var model = new NewCompViewModel();
             ViewBag.Teams = _teamRepository.AllTeams;
+
             return View(model);
         }
 
@@ -64,8 +68,10 @@ namespace competitiemanager.Controllers
             if (ModelState.IsValid)
             {
                 _competitionRepository.CreateComp(model);
+
                 return RedirectToAction("List");
             }
+
             return View(model);
         }
     }

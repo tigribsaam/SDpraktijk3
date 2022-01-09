@@ -14,14 +14,12 @@ namespace competitiemanager.Controllers
     {
         private readonly IGameRepository _gameRepository;
         private readonly IBetRepository _betRepository;
-        private readonly IUserRepository _userRepository;
         private string _userId;
 
-        public GameController(IGameRepository gameRepository, IBetRepository betRepository, IUserRepository userRepositroy, IHttpContextAccessor httpContextAccessor)
+        public GameController(IGameRepository gameRepository, IBetRepository betRepository, IHttpContextAccessor httpContextAccessor)
         {
             _gameRepository = gameRepository;
             _betRepository = betRepository;
-            _userRepository = userRepositroy;
             _userId = httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
         }
 
@@ -30,6 +28,7 @@ namespace competitiemanager.Controllers
 
             GameViewModel GameViewModel = new GameViewModel();
             GameViewModel.Game = _gameRepository.AllGames;
+
             return View(GameViewModel);
         }
 
@@ -37,6 +36,7 @@ namespace competitiemanager.Controllers
         {
             var Game = _gameRepository.GetGameById(id);
             if (Game == null)
+
                 return NotFound();
 
             GameDetailsViewModel ViewModel = new GameDetailsViewModel();
@@ -44,13 +44,15 @@ namespace competitiemanager.Controllers
             ViewModel.bets = _betRepository.AllBets.Where(g => g.GameId == id);
             ViewModel.currentUser = _userId;
             ViewModel.placedBet = ViewModel.bets.FirstOrDefault(u => u.User.IdentityId == _userId);
+
             return View(ViewModel);
 
         }
 
         public ActionResult inputscore(int id)
         {
-            if(_gameRepository.GetGameById(id).Status == 3)
+            //check if game already ended
+            if (_gameRepository.GetGameById(id).Status == 3)
             {
                 return RedirectToAction("Details", new { id = id });
             }
@@ -62,7 +64,7 @@ namespace competitiemanager.Controllers
         [HttpPost]
         public ActionResult inputscore(GameFormViewModel model)
         {
-            //check of de wedstrijd al is afgelopen
+            //check if game already ended
             if (ModelState.IsValid && _gameRepository.GetGameById(model.GameId).Status<3)
             {
                 _gameRepository.updateGame(model);
@@ -70,6 +72,7 @@ namespace competitiemanager.Controllers
                 return RedirectToAction("Details", new { id = model.GameId});
             }
             model.game = _gameRepository.GetGameById(model.GameId);
+
             return View(model);
         }
     }

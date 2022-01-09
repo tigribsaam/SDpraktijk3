@@ -13,7 +13,8 @@ namespace competitiemanager.ViewModels
         public int GameId { get; set; }
         public string UserId { get; set; }
         public User User { get; set; }
-        //1/1 = thuis 2/2 = uit 3/x = gelijk
+
+        //1/1 = home 2/2 = away 3/x = tie
         [Required(ErrorMessage = "Voer de voorspelling in")]
         [Display(Name = "voorspelling")]
         [Range(1, 3)]

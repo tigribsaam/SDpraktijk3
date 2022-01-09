@@ -19,6 +19,7 @@ namespace competitiemanager.Models.Repositories
             _appDbContext = appDbContext;
             _teamRepository = teamRepository;
         }
+
         public IEnumerable<Competition> AllCompetitions
         {
             get
@@ -26,6 +27,7 @@ namespace competitiemanager.Models.Repositories
                 return _appDbContext.Competitions.Include(t => t.Teams).ThenInclude(t => t.Team).Include(g => g.Games);
             }
         }
+
 
         public Competition GetCompById(int compId)
         {
@@ -47,9 +49,9 @@ namespace competitiemanager.Models.Repositories
             _appDbContext.Competitions.Add(newComp);
             _appDbContext.SaveChanges();
 
-            List<int> teamsinComp = new List<int>();
+
             //create teams in competition
-            //List<TeamInCompetition> TeamsInComp = new List<TeamInCompetition>();  --niet meer nodig--
+            List<int> teamsinComp = new List<int>();
             foreach (var teamId in model.SelectedTeam)
             {
                 TeamInCompetition t = new TeamInCompetition {
@@ -74,7 +76,7 @@ namespace competitiemanager.Models.Repositories
             //rekencijfers:
 
             List<string> teams = teamsinComp.ConvertAll(delegate (int i) { return i.ToString(); });
-            //bij oneven aantallen 'rust' toevoegen 
+            //add 'break' if odd numbers 
             if ((teams.Count % 2) != 0)
             {
                 teams.Add("break");
@@ -82,29 +84,29 @@ namespace competitiemanager.Models.Repositories
             List<string> reversedTeams = new List<string>(teams);
             reversedTeams.Reverse();
 
-            //eerst volgende zaterdag als startdag, tenzij vandaag zaterdag is
+            //next Saturday as start day, unless today is Saturday
             DateTime today = DateTime.Today.AddHours(12);
             int daysUntilSaturday = (((int)DayOfWeek.Friday - (int)today.DayOfWeek + 7) % 7) + 1;
             DateTime gameday = today.AddDays(daysUntilSaturday);
 
             var r = new Random();
 
-            //definitie voor hele competitie: uit- en thuiswedstrijden, max wedstrijden per week als elk team max 1x per week speelt
-            int AantalWedstrijden = teams.Count * (teams.Count - 1);
-            int AantalPerWeek = (teams.Count / 2);
-            int AantalWeken = AantalWedstrijden / AantalPerWeek;
+            //definition double round robin: total home and away games, max games per week, duration of competition 
+            int NumGames = teams.Count * (teams.Count - 1);
+            int NumPerWeek = (teams.Count / 2);
+            int NumWeeks = NumGames / NumPerWeek;
 
            
 
 
-            // (double) round robbin 
-            //aantal weken
-            for (int i = 0; i < AantalWeken; i++)
+            // (double) round robin 
+            //loop per weeks
+            for (int i = 0; i < NumWeeks; i++)
             {
-                //aantal wedstrijden
-                for (int k = 0; k< AantalPerWeek; k++)
+                //loop of games per week
+                for (int k = 0; k< NumPerWeek; k++)
                 {
-                    //geen wedstijd aanmaken als team tegen 'rust moet
+                    //continues if team goes against 'break'
                     if(teams[k].Equals("break") || reversedTeams[k].Equals("break"))
                     {
                         continue;
@@ -125,15 +127,15 @@ namespace competitiemanager.Models.Repositories
                 }
 
 
-                //round robbin logica: teams in lijsten doorschuiven behalve één
-                //lijsten omwisselen op de helft van de competitie
-                if (i == (AantalWeken / 2) - 1)
+                //round robin logica: teams move a place in the list except for one
+                //for double round robin switch lists
+                if (i == (NumWeeks / 2) - 1)
                 {
                     var templist = teams;
                     teams = new List<string>(reversedTeams);
                     reversedTeams = new List<string>(templist);
                 }
-                if (i >= (AantalWeken / 2) - 1)
+                if (i >= (NumWeeks / 2) - 1)
                 {
                     string temp = reversedTeams[1];
                     reversedTeams.RemoveAt(1);

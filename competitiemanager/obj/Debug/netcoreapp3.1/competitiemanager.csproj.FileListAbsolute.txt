@@ -36,12 +36,8 @@ C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\Razo
 C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
 C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\Razor\Views\Competition\List.cshtml.g.cs
 C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\Razor\Views\Competition\Details.cshtml.g.cs
-C:\Users\Birgi\GitHub\SDpraktijk3\competitiemanager\obj\Debug\netcoreapp3.1\Razor\Views\Game\List.cshtml.g.cs
 C:\Users\Birgi\GitHub\SDpraktijk3\competitiemanager\obj\Debug\netcoreapp3.1\Razor\Views\Game\Details.cshtml.g.cs
-C:\Users\Birgi\GitHub\SDpraktijk3\competitiemanager\obj\Debug\netcoreapp3.1\Razor\Views\TeamInComp\Details.cshtml.g.cs
-C:\Users\Birgi\GitHub\SDpraktijk3\competitiemanager\obj\Debug\netcoreapp3.1\Razor\Views\TeamInComp\List.cshtml.g.cs
 C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\Razor\Views\Competition\NewComp.cshtml.g.cs
-C:\Users\Birgi\GitHub\SDpraktijk3\competitiemanager\obj\Debug\netcoreapp3.1\Razor\Views\test\testindex.cshtml.g.cs
 C:\Users\Birgi\GitHub\SDpraktijk3\competitiemanager\obj\Debug\netcoreapp3.1\Razor\Views\Game\inputscore.cshtml.g.cs
 C:\Users\Birgi\GitHub\SDpraktijk3\competitiemanager\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Birgi\GitHub\SDpraktijk3\competitiemanager\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
@@ -181,5 +177,4 @@ C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\Razo
 C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
-C:\Users\Birgi\GitHub\SDpraktijk3\Competitiemanager\obj\Debug\netcoreapp3.1\Razor\Views\Bet\Index.cshtml.g.cs
 C:\Users\Birgi\GitHub\SDpraktijk3\competitiemanager\obj\Debug\netcoreapp3.1\Razor\Views\Team\NewTeam.cshtml.g.cs

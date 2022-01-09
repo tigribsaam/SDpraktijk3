@@ -21,8 +21,10 @@ namespace competitiemanager.Controllers
         public IActionResult Index()
         {
             var users = _userRepository.AllUsers.ToList();
+            //sort - based on totoscore
             users.Sort((a, b) => b.TotoScore.CompareTo(a.TotoScore));
             ViewBag.users = users;
+
             return View();
         }
     }

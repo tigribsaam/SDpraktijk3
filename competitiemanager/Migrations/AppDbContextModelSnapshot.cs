@@ -315,7 +315,7 @@ namespace competitiemanager.Migrations
                             GoalsAway = 0,
                             GoalsHome = 2,
                             HomeTeamId = 1,
-                            StartDateAndTime = new DateTime(2022, 1, 6, 21, 23, 15, 392, DateTimeKind.Local).AddTicks(2195),
+                            StartDateAndTime = new DateTime(2022, 1, 8, 15, 32, 39, 102, DateTimeKind.Local).AddTicks(9012),
                             Status = 3
                         },
                         new
@@ -326,7 +326,7 @@ namespace competitiemanager.Migrations
                             GoalsAway = 0,
                             GoalsHome = 0,
                             HomeTeamId = 2,
-                            StartDateAndTime = new DateTime(2022, 1, 13, 21, 23, 15, 395, DateTimeKind.Local).AddTicks(506),
+                            StartDateAndTime = new DateTime(2022, 1, 15, 15, 32, 39, 106, DateTimeKind.Local).AddTicks(825),
                             Status = 0
                         });
                 });

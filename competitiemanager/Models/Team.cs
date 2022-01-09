@@ -17,20 +17,20 @@ namespace competitiemanager.Models
         [Display(Name = "Naam")]
         [StringLength(50)]
         public String Name { get; set; }
+
         [BindNever]
         public List<Player> Players { get; set; }
+
         [Required(ErrorMessage = "Voer de thuislocatie van het team in")]
         [Display(Name = "Locatie")]
         [StringLength(50)]
         public String Location { get; set; }
 
-
-
-
-        public static ValidationResult TestLengthPlayers(List<String> Teams, ValidationContext pValidationContext)
+        //custom datavalidation: tests length of list players
+        public static ValidationResult TestLengthPlayers(List<String> players, ValidationContext pValidationContext)
         {
-            Teams.RemoveAll(item => item == null);
-            if (Teams == null || Teams.Count < 2 || Teams.Count > 20) // cannot start with a digit
+            players.RemoveAll(item => item == null);
+            if (players == null || players.Count < 2 || players.Count > 20) // cannot start with a digit
                 return new ValidationResult("Voeg minimaal 2 en maximaal 20 spelers toe aan het team", new List<string> { "CategoryName" });
             return ValidationResult.Success;
         }

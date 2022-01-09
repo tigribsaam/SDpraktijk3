@@ -39,7 +39,7 @@ namespace competitiemanager.Models.Repositories
                 UserId = model.User.UserId,
                 Game = model.game,
                 User = model.User,
-                //1/1 = thuis 2/2 = uit 3/x = gelijk
+                //1/1 = home 2/2 = away 3/x = tie
                 Prediction = model.Prediction
             };
             _appDbContext.Bets.Add(newBet);

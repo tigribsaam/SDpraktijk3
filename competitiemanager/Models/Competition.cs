@@ -21,8 +21,7 @@ namespace competitiemanager.Models
         [BindNever]
         public List<Game> Games { get; set; }
 
-
-
+        //custom datavalidation: tests length of list teams
         public static ValidationResult TestLengthTeams(List<int> Teams, ValidationContext pValidationContext)
         {
             if (Teams == null || Teams.Count < 2 || Teams.Count > 100) // cannot start with a digit

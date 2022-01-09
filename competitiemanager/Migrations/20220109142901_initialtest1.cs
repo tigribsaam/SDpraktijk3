@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace competitiemanager.Migrations
 {
-    public partial class initial : Migration
+    public partial class initialtest1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -372,12 +372,12 @@ namespace competitiemanager.Migrations
             migrationBuilder.InsertData(
                 table: "Games",
                 columns: new[] { "GameId", "AwayTeamId", "CompetitionId", "GoalsAway", "GoalsHome", "HomeTeamId", "StartDateAndTime", "Status" },
-                values: new object[] { 1, 2, 1, 0, 2, 1, new DateTime(2022, 1, 6, 21, 23, 15, 392, DateTimeKind.Local).AddTicks(2195), 3 });
+                values: new object[] { 1, 2, 1, 0, 2, 1, new DateTime(2022, 1, 8, 15, 29, 1, 360, DateTimeKind.Local).AddTicks(9844), 3 });
 
             migrationBuilder.InsertData(
                 table: "Games",
                 columns: new[] { "GameId", "AwayTeamId", "CompetitionId", "GoalsAway", "GoalsHome", "HomeTeamId", "StartDateAndTime", "Status" },
-                values: new object[] { 2, 1, 1, 0, 0, 2, new DateTime(2022, 1, 13, 21, 23, 15, 395, DateTimeKind.Local).AddTicks(506), 0 });
+                values: new object[] { 2, 1, 1, 0, 0, 2, new DateTime(2022, 1, 15, 15, 29, 1, 364, DateTimeKind.Local).AddTicks(2852), 0 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

@@ -22,6 +22,7 @@ namespace competitiemanager.Controllers
         {
             TeamViewModel teamViewModel = new TeamViewModel();
             teamViewModel.Team = _teamRepository.AllTeams;
+
             return View(teamViewModel);
         }
         
@@ -29,7 +30,9 @@ namespace competitiemanager.Controllers
         {
             var team = _teamRepository.GetTeamById(id);
             if (team == null)
+
                 return NotFound();
+            
             return View(team);
 
         }
@@ -37,7 +40,8 @@ namespace competitiemanager.Controllers
         [Authorize]
         public IActionResult NewTeam()
         {
-            var model = new NewTeamViewModel { };
+            var model = new NewTeamViewModel();
+
             return View(model);
         }
 
@@ -49,8 +53,10 @@ namespace competitiemanager.Controllers
             if (ModelState.IsValid)
             {
                 _teamRepository.CreateTeam(model);
+
                 return RedirectToAction("List");
             }
+
             return View(model);
         }
     }

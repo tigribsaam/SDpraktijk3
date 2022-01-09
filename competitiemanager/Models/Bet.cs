@@ -14,6 +14,7 @@ namespace competitiemanager.Models
         public int UserId { get; set; }
         public User User { get; set; }
         public Game Game { get; set; }
+
         //1/1 = thuis 2/2 = uit 3/x = gelijk
         [Required(ErrorMessage = "Voer de voorspelling in")]
         [Display(Name = "voorspelling")]

@@ -24,7 +24,7 @@ namespace competitiemanager.Models
         public DbSet<User> UsersToto { get; set; }
         public DbSet<Player> Players { get; set; }
 
-
+        //seed dummy data for demo
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 

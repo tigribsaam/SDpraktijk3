@@ -14,7 +14,7 @@
     <input asp-for="GameId" class="form-control" value="@Model.game.GameId" style="visibility:hidden " />
     <br />
 
-    @*1/1 = thuis 2/2 = uit 3/x = gelijk*@
+    @*1/1 = home 2/2 = away 3/x = tie*@
     <input type="radio" asp-for="Prediction" value=1 checked="checked" />
     <label class="form">Thuis wint: @Model.game.HomeTeam.Team.Name</label>
     <br />
@@ -30,7 +30,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-5">
-            <input asp-controller="Bet" asp-action="PlaceBet" @*asp-route-id="@Model.game.GameId"*@ type="submit" class="abutton" value="Inzetten" />
+            <input asp-controller="Bet" asp-action="PlaceBet"  type="submit" class="abutton" value="Inzetten" />
         </div>
     </div>
 

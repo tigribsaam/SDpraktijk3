@@ -22,6 +22,7 @@ namespace competitiemanager.Controllers
 
         public IActionResult Index()
         {
+            //games of this week
             var today = DateTime.Today;
             var range = DateTime.Today.AddDays(6);
 
@@ -29,8 +30,10 @@ namespace competitiemanager.Controllers
             homeViewModel.Games = _gameRepository.AllGames.Where(d => d.StartDateAndTime >= today && d.StartDateAndTime < range);
 
             var users = _userRepository.AllUsers.ToList();
+            //sort - based on totoscore
             users.Sort((a, b) => b.TotoScore.CompareTo(a.TotoScore));
             homeViewModel.Users = users.Take(25);
+
             return View(homeViewModel);
         }
     }
