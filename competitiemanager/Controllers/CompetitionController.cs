@@ -38,8 +38,10 @@ namespace competitiemanager.Controllers
             if (comp == null)
                 return NotFound();
             comp.Teams.Sort((a, b) => b.Points.CompareTo(a.Points));
+            
+            //comp.Games.Where(item => item.Status == 3);
+            comp.Games.Sort((a, b) => a.StartDateAndTime.CompareTo(b.StartDateAndTime));
             var gamesplayed = new List<Game>(comp.Games.Where(item => item.Status == 3));
-                //comp.Games.Where(item => item.Status == 3);
             comp.Games.RemoveAll(item => item.Status == 3);
             comp.Games.AddRange(gamesplayed);
             return View(comp);
