@@ -1,0 +1,20 @@
+﻿@model TeamViewModel
+
+
+    <h1>Alle teams</h1>
+
+    <a style="margin:15px;" class="abutton" asp-controller="Team" asp-action="NewTeam">Nieuw team aanmaken</a>
+
+<br />
+
+    @foreach (var team in Model.Team)
+    {
+        <div >
+            <a class="teamCard" asp-controller="Team" asp-action="Details" asp-route-id ="@team.TeamId">
+                <p class="teamCardText"><b>@team.Name</b></p>
+            <p class="teamCardText">@team.Location</p>
+            </a>
+            
+
+        </div> 
+    }

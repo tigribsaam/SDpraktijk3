@@ -1,0 +1,46 @@
+﻿@model NewCompViewModel
+
+@{
+    ViewData["Title"] = "New";
+    //Layout = null;
+}
+
+<form asp-action="NewComp" enctype="multipart/form-data" method="post" class=" form-horizontal" role="form">
+    <h1>Competitie aanmaken</h1>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form">
+        <label asp-for="Name" class="form"></label>
+        <div class="col-md-5">
+            <input asp-for="Name" class="form" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div>
+            @foreach (var team in ViewBag.Teams)
+            {
+                <label class="form">
+                    <input class="form"
+                           type="checkbox"
+                            name="SelectedTeam"
+                            value="@team.TeamId"
+                           @if (Model.SelectedTeam.Contains(team.TeamId))
+                                       {<text> checked </text>}
+                         /> @team.Name
+                    </label>
+            }
+
+        <span asp-validation-for="SelectedTeam" class="text-danger"></span>
+
+
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+            <input type="submit" class="abutton" value="competitie aanmaken" />
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,19 @@
+﻿@model CompetitionListViewModel
+
+ <h1>Competities</h1>
+<a class="abutton" asp-area="" asp-controller="Competition" asp-action="NewComp">Nieuwe competitie aanmaken</a>
+
+@if(Model.Competition != null || Model.Competition.Count() != 0) 
+{ 
+}
+
+
+@foreach (var comp in Model.Competition)
+{
+<div class="compCard">
+    <a class="compCardTitle" asp-controller="Competition" asp-action="Details" asp-route-id ="@comp.CompetitionId">@comp.Name</a>
+    <p class="compCardtext" >@comp.Teams.Count() Teams</p>
+    <p class="compCardtext" >van @comp.Games.First().StartDateAndTime.ToString("dd-MM-yyyy") tot @comp.Games.Last().StartDateAndTime.ToString("dd-MM-yyyy")</p>
+
+</div>
+} 

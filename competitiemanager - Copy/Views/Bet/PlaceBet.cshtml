@@ -1,0 +1,37 @@
+﻿@model BetFormViewModel
+
+<form asp-action="PlaceBet" enctype="multipart/form-data" method="post" class=" form-horizontal" role="form">
+    <h1>Weddenschap plaatsen</h1>
+    <div class="divinline">
+        <h4>@Model.game.HomeTeam.Team.Name vs. @Model.game.AwayTeam.Team.Name </h4>
+        <h4>@Model.game.HomeTeam.Team.Location</h4>
+        <h4>@Model.game.StartDateAndTime.ToString("dd-MM-yyyy") - @Model.game.StartDateAndTime.ToString("HH:mm")</h4>
+    </div>
+
+    <h3>Voorspelling</h3>
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <input asp-for="GameId" class="form-control" value="@Model.game.GameId" style="visibility:hidden " />
+    <br />
+
+    @*1/1 = thuis 2/2 = uit 3/x = gelijk*@
+    <input type="radio" asp-for="Prediction" value=1 checked="checked" />
+    <label class="form">Thuis wint: @Model.game.HomeTeam.Team.Name</label>
+    <br />
+
+    <input type="radio" asp-for="Prediction" value=3 />
+    <label class="form">Gelijkspel</label>
+    <br />
+
+    <input type="radio" asp-for="Prediction" value=2 />
+    <label class="form">Uit wint: @Model.game.AwayTeam.Team.Name</label>
+    <br />
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+            <input asp-controller="Bet" asp-action="PlaceBet" @*asp-route-id="@Model.game.GameId"*@ type="submit" class="abutton" value="Inzetten" />
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,49 @@
+﻿@model GameFormViewModel
+<h1>@Model.game.HomeTeam.Team.Name vs. @Model.game.AwayTeam.Team.Name </h1>
+<div class="divinline">
+    <h3>@Model.game.HomeTeam.Team.Location</h3>
+    <h3>@Model.game.StartDateAndTime.ToString("dd-MM-yyyy")</ </h3>
+    <h3>@Model.game.StartDateAndTime.ToString("HH:mm")</h3>
+</div>
+
+<div class="divinline">
+    <form asp-action="inputScore" enctype="multipart/form-data" method="post" class=" form-horizontal" role="form">
+        <h3>Score invoeren</h3>
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <input asp-for="GameId" class="form-control" value="@Model.game.GameId" style="visibility:hidden " />
+
+        <div class="form">
+            <label asp-for="GoalsHome" class="form">Thuis: @Model.game.HomeTeam.Team.Name</label>
+            <div class="col-md-5">
+                <input asp-for="GoalsHome" value="@Model.game.GoalsHome" class="form" />
+                <span asp-validation-for="GoalsHome" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form">
+            <label asp-for="GoalsAway" class="form">Uit: @Model.game.AwayTeam.Team.Name</label>
+            <div class="form">
+                <input asp-for="GoalsAway" value="@Model.game.GoalsAway" class="form" />
+                <span asp-validation-for="GoalsAway" class="text-danger"></span>
+            </div>
+        </div>
+
+
+        <input type="radio" asp-for="game.Status" value=2 checked="checked" />
+        <label class="form">Wedstrijd is nog bezig</label>
+        <br />
+
+        <input type="radio" asp-for="game.Status" value=3 />
+        <label class="form">Wedstrijd beëindigen</label>
+        <br />
+
+        <div class="form">
+            <div class="form">
+                <input asp-controller="Game" asp-action="inputScore" asp-route-id="@Model.game.GameId" type="submit" class="abutton" value="Invoeren" />
+            </div>
+        </div>
+
+    </form>
+</div>

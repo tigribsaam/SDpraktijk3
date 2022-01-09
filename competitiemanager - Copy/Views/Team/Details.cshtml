@@ -1,0 +1,10 @@
+﻿@model Team
+
+<h2>@Model.Name</h2>
+<div>
+    <p>@Model.Location</p>
+    @foreach (var playa in Model.Players)
+    {
+        <p>@playa.Name</p>
+    }
+</div>

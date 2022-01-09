@@ -1,0 +1,28 @@
+﻿
+@{int i = 1;}
+
+
+<h1>Gebruikers</h1>
+
+<div style="width: 300px">
+    <table class="rankingTable">
+        <tr class="rankingTableHeaderRow">
+            <th class="rankingTableHeader"></th>
+            <th class="rankingTableHeader">Gebruikersnaam</th>
+            <th class="rankingTableHeader">Score</th>
+        </tr>
+        @foreach (var u in ViewBag.users)
+        {
+            <tr class="rankingTableRow">
+                <td class="rankingTableItem">@i</td>
+                <td class="rankingTableItem">@u.Name</td>
+                <td class="rankingTableItem">@u.TotoScore</td>
+
+            </tr>
+            i++;
+
+        }
+    </table>
+</div>
+
+

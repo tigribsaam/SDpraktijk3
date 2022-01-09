@@ -1,0 +1,79 @@
+﻿@model HomeViewModel
+
+<h1>Home</h1>
+
+<p>De NOVI-competitiemanager! Alle NOVI-medewerkers kunnen zich makkelijk registreren om een competitie aan te maken of een weddenschap te plaatsen.</p>
+
+
+<div class="divinline">
+    <h3>Wedstrijden deze week</h3>
+    @foreach (var game in Model.Games)
+    {
+
+        <div class="gameCard">
+            <a class="gameCardTitle" asp-controller="Game" asp-action="Details" asp-route-id="@game.GameId">@game.HomeTeam.Team.Name vs. @game.AwayTeam.Team.Name</a>
+            <table class="gameCardTable">
+                <tr>
+                    <td class="gameCardText"> @game.HomeTeam.Team.Name</td>
+                    <td><p class="gameCardText">@game.StartDateAndTime.ToString("dd-MM-yyyy")</p></td>
+                    <td class="gameCardText"> @game.AwayTeam.Team.Name</td>
+                </tr>
+                <tr>
+                    <td class="gameCardScore" rowspan="2" style="padding-left: 60px">@game.GoalsHome</td>
+                    <td><p class="gameCardText">@game.StartDateAndTime.ToString("HH:mm")</p></td>
+                    <td class="gameCardScore" rowspan="2" style="padding-right: 60px">@game.GoalsAway</td>
+
+                </tr>
+                <tr>
+                    @*<td></td>*@
+                    <td class="gameCardText"> @game.HomeTeam.Team.Location</td>
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        @switch (game.Status)
+                        {
+                            case 0:
+                                <p class="gameCardText">Nog niet gespeeld</p>
+                                break;
+                            case 1:
+                                <p class="gameCardText">Bezig</p>
+                                break;
+                            case 3:
+                                <p class="gameCardText"><b>Afgelopen</b></p>
+                                break;
+                        }
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    }
+</div>
+
+<div class="divinline">
+    <h3>Huidige stand toto</h3>
+    @{int i = 1;}
+
+    <div >
+        <table class="rankingTable">
+            <tr class="rankingTableHeaderRow">
+                <th class="rankingTableHeader"></th>
+                <th class="rankingTableHeader">Gebruikersnaam</th>
+                <th class="rankingTableHeader">Score</th>
+            </tr>
+            @foreach (var u in Model.Users)
+            {
+                <tr class="rankingTableRow">
+                    <td class="rankingTableItem">@i</td>
+                    <td class="rankingTableItem">@u.Name</td>
+                    <td class="rankingTableItem">@u.TotoScore</td>
+
+                </tr>
+                i++;
+
+            }
+        </table>
+    </div>
+</div>
