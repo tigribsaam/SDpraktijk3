@@ -38,8 +38,8 @@ namespace competitiemanager.Controllers
             var comp = _competitionRepository.GetCompById(id);
             if (comp == null)
                 return NotFound();
-            //sort - based on points
-            comp.Teams.Sort((a, b) => b.Points.CompareTo(a.Points));
+            //sort - based on points then on doelsaldo
+            comp.Teams.Sort((a, b) => a.Points == b.Points ? b.DoelSaldo.CompareTo(a.DoelSaldo) : b.Points.CompareTo(a.Points));
             
             //sort - based on datetime, then place all ended games in the end of list
             comp.Games.Sort((a, b) => a.StartDateAndTime.CompareTo(b.StartDateAndTime));
